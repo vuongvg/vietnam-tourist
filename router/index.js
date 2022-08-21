@@ -1,0 +1,20 @@
+const express=require("express")
+const { asyncWrapper } = require("../middlewares/asyncWrapper")
+const router=express.Router()
+const authRouter=require('./auth')
+const postRouter=require('./post')
+const userRouter=require('./user')
+const hotelRouter=require('./hotel')
+const tourRouter=require('./tour')
+const restaurantRouter=require('./restaurant')
+const locationRouter=require('./location')
+
+router.use('/location',asyncWrapper(locationRouter))
+router.use('/restaurant',asyncWrapper(restaurantRouter))
+router.use('/tour',asyncWrapper(tourRouter))
+router.use('/hotel',asyncWrapper(hotelRouter))
+router.use('/user',asyncWrapper(userRouter))
+router.use('/auth',asyncWrapper(authRouter))
+router.use('/post',asyncWrapper(postRouter))
+
+module.exports=router
