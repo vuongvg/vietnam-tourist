@@ -41,3 +41,5 @@ const register = async (username, email, password) => {
   });
 }
 
+module.exports = { register };
+

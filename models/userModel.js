@@ -3,7 +3,6 @@ const { default: mongoose } = require("mongoose");
 const userSchema = new mongoose.Schema({
    userid: {
       type:String,
-      require:true,
       unique:true
    },
    username: { 
