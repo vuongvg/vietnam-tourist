@@ -17,11 +17,13 @@ router.post("/register", async (req, res) => {
          req.body.username,
          req.body.email,
          req.body.password,
-         req.body.confirmpassword
+         req.body.phone
       );
-      res.json(newUser);
+      res.send("OK");
+      // res.json(newUser);
    } catch (err) {
-      return customError(1,"Tài khoản hoặc mật khẩu không chính xác!");
+      res.send("Lỗi");
+      // return customError(1,"Tài khoản hoặc mật khẩu không chính xác!");
    }
 });
 

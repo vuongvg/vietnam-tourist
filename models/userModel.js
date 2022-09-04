@@ -38,6 +38,10 @@ const userSchema = new mongoose.Schema({
    }
 });
 
+userSchema.method.findByNames = () => {
+   console.log("Tìm tài khoản theo tên");
+}
+
 const User = mongoose.model('users',userSchema);
 
 module.exports = User;
