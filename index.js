@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(express.static('/public'))
 
 app.get('/',(req,res)=>{
-    res.send('Sever is runing')
+    res.send('Sever is running')
 })
 
 app.use('/api',router)
