@@ -19,11 +19,13 @@ router.post("/register", async (req, res) => {
          req.body.password,
          req.body.phone
       );
-      res.send("OK");
-      // res.json(newUser);
+
+      res.send(newUser);
    } catch (err) {
-      res.send("Lỗi");
-      // return customError(1,"Tài khoản hoặc mật khẩu không chính xác!");
+      res.send({
+         status:400,
+         message:"Inserting failed"
+      });
    }
 });
 

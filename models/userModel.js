@@ -1,10 +1,6 @@
 const { default: mongoose } = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-   userid: {
-      type:String,
-      unique:true
-   },
    username: { 
       type:String, 
       require:true,
@@ -21,9 +17,11 @@ const userSchema = new mongoose.Schema({
       ],
    },
    phone: { 
-      type:Number,
-      min:9,
-      max:15,
+      type:String,
+      match:[
+         /((09|03|07|08|05)+([0-9]{8})\b)/,
+         "Please enter valid phone number",
+      ]
    },
    hash: { 
       type:String,
@@ -40,6 +38,10 @@ const userSchema = new mongoose.Schema({
 
 userSchema.method.findByNames = () => {
    console.log("Tìm tài khoản theo tên");
+}
+
+userSchema.method.findByEmail = () => {
+   console.log("Tìm tài khoản theo email");
 }
 
 const User = mongoose.model('users',userSchema);

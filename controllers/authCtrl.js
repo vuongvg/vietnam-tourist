@@ -2,6 +2,7 @@ const User = require("../models/userModel");
 const { customError } = require("../errors/customError");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
+const userDB =  require("../db/user");
 
 const encryptPassword = (password) => {
   const salt = crypto.randomBytes(128).toString("hex");
@@ -27,19 +28,32 @@ const verifyPassword = (password, user) => {
 }
 
 const register = async (username, email, password, phone) => {
-  const existedUser = await User.findOne({ username });
+  const existedUser = await User.findOne({ username:username });
+
+  const registeredEmail = await User.findOne({ email:email });
 
   if (existedUser) {
-    return customError(400, "Tài khoản này đã được sử dụng!");
+    return {
+      status:400,
+      message:"Username has been registered"
+    };
+  } else if (registeredEmail) {
+    return {
+      status: 400,
+      message:"Email has been registered"
+    };
   } else {
     const { salt, hashedPassword } = encryptPassword(password);
 
-    // const insertedUser = await insertUser({
-    //     username: username,
-    //     email: email,
-    //     salt: salt,
-    //     hashedPassword: hashedPassword,
-    // });
+    const insertedUser = await userDB.insertUser({
+        username: username,
+        email: email,
+        phone: phone,
+        salt: salt,
+        hash: hashedPassword,
+    });
+
+    return insertedUser;
   }
 }
 
