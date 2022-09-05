@@ -3,12 +3,12 @@ const { default: mongoose } = require("mongoose");
 const userSchema = new mongoose.Schema({
    username: { 
       type:String, 
-      require:true,
+      required:true,
       trim:true,
    },
    email: { 
       type:String, 
-      require:true,
+      required:true,
       lowercase: true,
       unique: true,
       match: [
@@ -25,14 +25,14 @@ const userSchema = new mongoose.Schema({
    },
    hash: { 
       type:String,
-      require:true, 
+      required:true, 
    },
    avatar: {
       type:String,
    },
    role: {
       type:Number, 
-      require:true,
+      required:true,
    }
 });
 

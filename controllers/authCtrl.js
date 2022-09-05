@@ -42,6 +42,11 @@ const register = async (username, email, password, phone) => {
       status: 400,
       message:"Email has been registered"
     };
+  } else if (!password || password.length <6) {
+    return {
+      status: 400,
+      message:"Email has been registered"
+    };
   } else {
     const { salt, hashedPassword } = encryptPassword(password);
 

@@ -8,10 +8,6 @@ router.post("/login", (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-   if(!req.body.password || req.body.password.length < 6) {
-      return customError(1,"Mật khẩu cần có ít nhất 6 ký tự!");
-   }
-
    try {
       const newUser = await AuthCtrl.register(
          req.body.username,
