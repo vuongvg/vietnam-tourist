@@ -3,8 +3,20 @@ const router = express.Router();
 const customError = require("../errors/customError");
 const AuthCtrl = require("../controllers/authCtrl");
 
-router.post("/login", (req, res) => {
-   res.send("router login");
+router.post("/login", async (req, res) => {
+   try {
+      const loginStatus = await AuthCtrl.login(
+         req.body.username,
+         req.body.password
+      );
+
+      res.send(loginStatus);
+   } catch(err) {
+      res.send({
+         status:400,
+         message:"Login failed"
+      });
+   }
 });
 
 router.post("/register", async (req, res) => {
