@@ -96,7 +96,7 @@ const login = async (username, password) => {
         {
           userId: existedUser._id
         },
-        "MY_PRIVATE_KEY",
+        process.env.MY_PRIVATE_KEY,
         {
           expiresIn: 60*60*24
         }
@@ -110,5 +110,5 @@ const login = async (username, password) => {
   }
 }
 
-module.exports = { register };
+module.exports = { register, login };
 
