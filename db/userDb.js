@@ -29,10 +29,16 @@ const insertUser = async (userInfor) => {
     }
 }
 
-const findUserByName = async (userInfor) => {
-    var user = await userModel.findUserByName(userInfor.username);
+const findUserByName = async (username) => {
+    var user = await userModel.findUserByName(username);
 
-    console.log(user);
-}
+    return user;
+};
 
-module.exports = { insertUser };
+const findUserById = async (userId) => {
+    var user = await userModel.findUserById(userId);
+
+    return user;
+};
+
+module.exports = { insertUser, findUserByName, findUserById };

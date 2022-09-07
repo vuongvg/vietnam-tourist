@@ -47,6 +47,10 @@ userSchema.statics.findUserByEmail = function(email) {
    return this.find({email: email});
 }
 
+userSchema.statics.findUserById = function(_id) {
+   return this.find({_id: _id});
+}
+
 const User = mongoose.model('userModel',userSchema);
 
 module.exports = User;

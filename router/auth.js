@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const customError = require("../errors/customError");
+//const customError = require("../errors/customError");
 const AuthCtrl = require("../controllers/authCtrl");
 
 router.post("/login", async (req, res) => {
