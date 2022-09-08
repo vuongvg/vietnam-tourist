@@ -43,12 +43,20 @@ userSchema.statics.findUserByName = function(username) {
    return this.find({username: username});
 }
 
+userSchema.statics.findUserById = function(_id) {
+   return this.find({_id: _id});
+}
+
 userSchema.statics.findUserByEmail = function(email) {
    return this.find({email: email});
 }
 
 userSchema.statics.findUserById = function(_id) {
    return this.find({_id: _id});
+}
+
+userSchema.statics.updateUserInfor = function(userId,updateInfor) {
+   return this.findByIdAndUpdate(userId, updateInfor, {new:true});
 }
 
 const User = mongoose.model('userModel',userSchema);
