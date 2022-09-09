@@ -7,7 +7,7 @@ router.get(
    "/",
    asyncWrapper(async (req, res) => {
       const result = await findAllPost();
-      res.json(result);
+      res.status(200).json(result);
    })
 );
 
@@ -15,7 +15,7 @@ router.get(
    "/:id",
    asyncWrapper(async (req, res) => {
       const result = await findSinglePost(req.params.id);
-      res.json(result);
+      res.status(200).json(result);
    })
 );
 
@@ -23,7 +23,7 @@ router.delete(
    "/:id",
    asyncWrapper(async (req, res) => {
       const result = await deletePost(req.params.id);
-      res.json(result);
+      res.status(200).json(result);
    })
 );
 

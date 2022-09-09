@@ -1,4 +1,3 @@
-const { customError } = require("../errors/customError");
 const Post = require("../models/postModel");
 
 const findSinglePost = async (_id) => {
@@ -20,6 +19,5 @@ const deletePost = async (_id) => {
 const updatePost = async (_id, data) => {
    return Post.updateOne({ _id }, data);
 };
-//ValidationError
 
 module.exports = { createPost, deletePost, findAllPost, findSinglePost, updatePost };

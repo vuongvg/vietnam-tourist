@@ -1,4 +1,3 @@
-const { customError } = require("../errors/customError");
 
 exports.asyncWrapper = (fn) => {
    return async (req, res, next) => {
