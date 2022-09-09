@@ -22,10 +22,13 @@ const PostSchema = new mongoose.Schema(
          required: [true, "Description is required"],
          minlength: [6, "Description can not be less than 6 characters"],
       },
-      //   like: {
-      //      type: Number,
-      //      default: 0,
-      //   },
+      like: {
+         type: Number,
+         default: 0,
+      },
+      comment: {
+         type: String,
+      },
    },
    { timestamps: true, versionKey: false }
 );

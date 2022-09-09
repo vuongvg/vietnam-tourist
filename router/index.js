@@ -8,6 +8,7 @@ const hotelRouter=require('./hotel')
 const tourRouter=require('./tour')
 const restaurantRouter=require('./restaurant')
 const locationRouter=require('./location')
+const commentRouter=require('./comment')
 
 router.use('/location',asyncWrapper(locationRouter))
 router.use('/restaurant',asyncWrapper(restaurantRouter))
@@ -16,5 +17,6 @@ router.use('/hotel',asyncWrapper(hotelRouter))
 router.use('/user',asyncWrapper(userRouter))
 router.use('/auth',asyncWrapper(authRouter))
 router.use('/post',asyncWrapper(postRouter))
+router.use('/comment',asyncWrapper(commentRouter))
 
-module.exports=router
+module.exports=router 

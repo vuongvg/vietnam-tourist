@@ -1,4 +1,3 @@
-const { customError } = require("../errors/customError");
 
 exports.errorHandleMdw = (err, req, res, next) => {
    if (err) {
