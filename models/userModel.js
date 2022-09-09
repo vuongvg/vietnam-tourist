@@ -3,14 +3,16 @@ const { default: mongoose } = require("mongoose");
 const userSchema = new mongoose.Schema({
    username: { 
       type:String, 
-      require:true,
+      unique:true,
+      required:[true, "Name must be provided"],
       trim:true,
+      maxlength:[20, "Nam can not be  more than 20 characters"]
    },
    email: { 
       type:String, 
-      require:true,
+      unique:true,
+      required:[true, "Email must be provided"],
       lowercase: true,
-      unique: true,
       match: [
          /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
          "Please fill a valid email address",
@@ -23,27 +25,40 @@ const userSchema = new mongoose.Schema({
          "Please enter valid phone number",
       ]
    },
+   salt: {
+      type: String,
+   },
    hash: { 
       type:String,
-      require:true, 
    },
    avatar: {
       type:String,
    },
    role: {
-      type:Number, 
-      require:true,
+      type:Number,
    }
-});
+}, { collection:'users' });
 
-userSchema.method.findByNames = () => {
-   console.log("Tìm tài khoản theo tên");
+userSchema.statics.findUserByName = function(username) {
+   return this.find({username: username});
 }
 
-userSchema.method.findByEmail = () => {
-   console.log("Tìm tài khoản theo email");
+userSchema.statics.findUserById = function(_id) {
+   return this.find({_id: _id});
 }
 
-const User = mongoose.model('users',userSchema);
+userSchema.statics.findUserByEmail = function(email) {
+   return this.find({email: email});
+}
 
-module.exports = User;
+userSchema.statics.findUserById = function(_id) {
+   return this.find({_id: _id});
+}
+
+userSchema.statics.updateUserInfor = function(userId,updateInfor) {
+   return this.findByIdAndUpdate(userId, updateInfor, {new:true});
+}
+
+const UserModel = mongoose.model('userModel',userSchema);
+
+module.exports = UserModel;

@@ -1,5 +1,15 @@
-const User = require("../models/userModel");
+const userDB = require("../db/userDb");
 
-exports.userCtrl = async () => {
-   return await User.find({});
-};
+const getUserInforById = async (userID) => {
+   const userInfor = await userDB.findUserById(userID);
+
+   return userInfor;
+}
+
+const updateUser = async (userId,updateInfor) => {
+   const updatedUser = await userDB.updateUserById(userId,updateInfor);
+
+   return updatedUser;
+}
+
+module.exports = { updateUser, getUserInforById};

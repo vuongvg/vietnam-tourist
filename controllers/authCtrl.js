@@ -2,11 +2,10 @@ const User = require("../models/userModel");
 const { customError } = require("../errors/customError");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
-const userDB =  require("../db/user");
+const userDB =  require("../db/userDb");
 
 const encryptPassword = (password) => {
   const salt = crypto.randomBytes(128).toString("hex");
-
   const hashedPassword = crypto.pbkdf2Sync(password, salt, 10000, 64, "sha512").toString("hex");
 
   return {
@@ -15,29 +14,26 @@ const encryptPassword = (password) => {
   }
 };
 
-const verifyPassword = (password, user) => {
-  const hashedPassword = crypto.pbkdf2Sync(
-      password, 
-      user.salt, 
-      10000, 
-      64, 
-      "sha512")
-  .toString("hex");
+const verifyPassword = (password, userInfor) => {
+  const hashedPassword = crypto.pbkdf2Sync(password, userInfor.salt, 10000, 64, "sha512").toString("hex");
 
-  return hashedPassword === user.hashedPassword;
+  return hashedPassword === userInfor.hash;
 }
 
 const register = async (username, email, password, phone) => {
-  const existedUser = await User.findOne({ username:username });
-
-  const registeredEmail = await User.findOne({ email:email });
-
-  if (existedUser) {
+  const existedUser = await User.findUserByName(username);
+  const registeredEmail = await User.findUserByEmail(email);
+  if (existedUser.length) {
     return {
       status:400,
       message:"Username has been registered"
     };
-  } else if (registeredEmail) {
+  } else if (registeredEmail.length) {
+    return {
+      status: 400,
+      message:"Email has been registered"
+    };
+  } else if (!password || password.length <6) {
     return {
       status: 400,
       message:"Email has been registered"
@@ -57,5 +53,39 @@ const register = async (username, email, password, phone) => {
   }
 }
 
-module.exports = { register };
+const login = async (username, password) => {
+  const existedUser = await userDB.findUserByName(username);
+    
+  if (!existedUser.length) {
+    return {
+      status:400,
+      message:"Username or Password is incorrect"
+    }
+  }
+
+  if (!verifyPassword(password, existedUser[0])) {
+    return {
+      status:400,
+      message:"Username or Password is incorrect"
+    }
+  }
+
+  const token = jwt.sign(
+    {
+      userId: existedUser[0]._id.toString()
+    },
+    process.env.MY_PRIVATE_KEY,
+    {
+      expiresIn: 60*60*24
+    }
+  )
+
+  return {
+    status:200,
+    data:existedUser,
+    token:token
+  }
+}
+
+module.exports = { register, login };
 

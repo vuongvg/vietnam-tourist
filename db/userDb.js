@@ -1,21 +1,14 @@
 const userModel = require("../models/userModel");
 const { customError } = require("../errors/customError");
 
-const userRegistation = async (req) => {
-
-}
-
-const userFindById = async (req) => {
-
-}
-
 const insertUser = async (userInfor) => {
 
     var newUser = new userModel({
         username: userInfor.username,
         email: userInfor.email,
-        hash: userInfor.hash,
         phone: userInfor.phone,
+        salt: userInfor.salt,
+        hash: userInfor.hash,
         role: 0
     });
 
@@ -36,4 +29,22 @@ const insertUser = async (userInfor) => {
     }
 }
 
-module.exports = { insertUser };
+const findUserByName = async (username) => {
+    var result = await userModel.findUserByName(username);
+
+    return result;
+};
+
+const findUserById = async (userId) => {
+    var result = await userModel.findUserById(userId);
+
+    return result;
+};
+
+const updateUserById = async (userId, updateInfor) => {
+    const result = await userModel.updateUserInfor(userId, updateInfor);
+
+    return result;
+}
+
+module.exports = { insertUser, findUserByName, findUserById, updateUserById };
