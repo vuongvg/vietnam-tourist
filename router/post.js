@@ -6,7 +6,7 @@ const router = express.Router();
 router.get(
    "/",
    asyncWrapper(async (req, res) => {
-      const result = await findAllPost();
+      const result = await findAllPost(req.query.page, req.query.limit);
       res.status(200).json(result);
    })
 );
