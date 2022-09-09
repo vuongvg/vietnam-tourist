@@ -4,8 +4,9 @@ const findSinglePost = async (_id) => {
    return Post.findOne({ _id });
 };
 
-const findAllPost = async () => {
-   return Post.find({}).limit(20);
+const findAllPost = async (page = 1, limit = 10) => {
+   return Post.find({}).skip((page - 1) * limit)
+   .limit(limit);;
 };
 
 const createPost = async (data) => {

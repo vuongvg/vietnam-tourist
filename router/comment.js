@@ -22,7 +22,7 @@ router.patch(
 router.get(
    "/:idPost",
    asyncWrapper(async (req, res) => {
-      const result = await findCommentById(req.params.idPost);
+      const result = await findCommentById(req.params.idPost, req.query.page, req.query.limit);
       res.status(200).json(result);
    })
 );

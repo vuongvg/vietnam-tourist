@@ -8,6 +8,8 @@ exports.updateComment = async (_id, data) => {
    return await Comment.update({ _id }, data);
 };
 
-exports.findCommentById = async (idPost) => {
-   return await Comment.find({ idPost }).limit(10);
+exports.findCommentById = async (idPost, page = 1, limit = 10) => {
+   return await Comment.find({ idPost })
+      .skip((page - 1) * limit)
+      .limit(limit);
 };
