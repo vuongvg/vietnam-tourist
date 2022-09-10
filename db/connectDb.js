@@ -2,11 +2,12 @@ const { default: mongoose } = require("mongoose");
 
 exports.connectDb = async () => {
    try {
-      await mongoose.connect(process.env.MONGODB_URI)
+      await mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true, useUnifiedTopology: true })
       .then(() => {
-         console.log('connection successful');
+         console.log('Connection successful');
       });
    } catch (error) {
       console.log(`*** Error connect DB`, error);
-   }
-};
+   } 
+}; 
+ 
