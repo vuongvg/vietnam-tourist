@@ -1,15 +1,14 @@
-const Comment = require("../models/commentModel");
+const commentModel = require("../models/commentModel");
+const BasePost = require("./BasePost");
 
-exports.createComment = async (data) => {
-   return await Comment.create(data);
-};
+class Comment extends BasePost {
+   findCommentByIdBlog = async (idPost, page = 1, limit = 10) => {
+      return await this._model
+         .find({ idPost })
+         .skip((page - 1) * limit)
+         .limit(limit);
+   };
+}
+const comment = new Comment(commentModel);
 
-exports.updateComment = async (_id, data) => {
-   return await Comment.update({ _id }, data);
-};
-
-exports.findCommentById = async (idPost, page = 1, limit = 10) => {
-   return await Comment.find({ idPost })
-      .skip((page - 1) * limit)
-      .limit(limit);
-};
+module.exports = comment;

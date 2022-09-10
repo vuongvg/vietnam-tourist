@@ -1,9 +1,8 @@
-const express = require("express");
-const router = express.Router();
+const { createBasePost, deleteBasePost, findAllBasePost, findSingleBasePost, updateBasePost } = require("../controllers/tourCtrl");
+const BaseRouter = require("./BaseRouter");
 
-router.get("/", (req, res) => {
-   res.send("router tour");
-});
+class TourRouter extends BaseRouter {}
+const router = new TourRouter({ createBasePost, deleteBasePost, findAllBasePost, findSingleBasePost, updateBasePost });
 
 
 module.exports = router;
