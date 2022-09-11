@@ -13,4 +13,16 @@ const createNewHotel = async (hotelInfor) => {
     return result;
 }
 
-module.exports = { getListHotel, createNewHotel };
+const updateHotel = async (hotelId, hotelInfor) => {
+    const result = await hotelModel.updateHotelInfor(hotelId, hotelInfor);
+
+    return result;
+}
+
+const deleteHotel = async (hotelId) => {
+    const result = await hotelModel.deleteHotelInfor(hotelId);
+
+    return result;
+}
+
+module.exports = { getListHotel, createNewHotel, updateHotel, deleteHotel };

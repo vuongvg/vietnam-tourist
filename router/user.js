@@ -16,7 +16,7 @@ router.get("/:id", authMdw, async(req, res) => {
 
 router.patch("/update/:id", authMdw, async (req, res) => {
    try {
-      const updatedUser = await userCtrl.updateUser(req.params.id,req.body);
+      const updatedUser = await userCtrl.updateUser(req.params.id, req.body);
 
       res.send(updatedUser);
    } catch (err) {

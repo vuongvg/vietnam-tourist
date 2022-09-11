@@ -57,6 +57,14 @@ hotelSchema.statics.getAllHotels = function() {
     return this.find({});
 }
 
+hotelSchema.statics.updateHotelInfor = function(hotelId,updateInfor) {
+    return this.findByIdAndUpdate(hotelId, updateInfor, {new:true});
+}
+
+hotelSchema.statics.deleteHotelInfor = function(hotelId) {
+    return this.deleteOne({ hotelId });
+}
+
 const HotelModel = mongoose.model('hotelModel',hotelSchema);
 
 module.exports = HotelModel;
