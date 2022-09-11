@@ -20,7 +20,6 @@ router.patch("/update/:id", authMdw, async (req, res) => {
 
       res.send(updatedUser);
    } catch (err) {
-      console.log(err);
       res.send({
          status:400,
          message:"Updating user information failed"

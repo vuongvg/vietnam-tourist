@@ -19,10 +19,13 @@ const hotelSchema = new mongoose.Schema({
     phone: { 
         type:String,
         required: [true, "Contact information must be provided"],
-        match:[
-            /((09|03|07|08|05)+([0-9]{8})\b)/,
-            "Please enter valid phone number",
-        ]
+        maxlength: [11, "The max length of phone number is only 11"],
+        minLength: [10, "The min length of phone number is only 10"],
+        unique: true,
+        // match: [
+        //     /(((\+|)84)|0)(3|5|7|8|9|2)+([0-9]{8|9})\b/,
+        //     "Please enter valid phone number",
+        // ]
     },
     city: {
         type:String,

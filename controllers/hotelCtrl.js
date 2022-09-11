@@ -1,15 +1,15 @@
-const hotelDb = require("../db/hotelDb");
+const hotelDB = require("../db/hotelDb");
 
-const getUserInforById = async (userID) => {
-   const userInfor = await userDB.findUserById(userID);
+const getListHotel = async () => {
+   const hotelsList = await hotelDB.getListHotel();
 
-   return userInfor;
+   return hotelsList;
 }
 
-const updateUser = async (userId,updateInfor) => {
-   const updatedUser = await userDB.updateUserById(userId,updateInfor);
+const createNewHotel = async (hotelInfor) => {
+   const newHotel = await hotelDB.createNewHotel(hotelInfor);
 
-   return updatedUser;
+   return newHotel;
 }
 
-module.exports = { updateUser, getUserInforById};
+module.exports = { getListHotel, createNewHotel };
