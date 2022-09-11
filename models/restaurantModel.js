@@ -56,18 +56,6 @@ const restaurantSchema = new mongoose.Schema(
   { collection:'restaurants', timestamps: true, versionKey: false }
 );
 
-restaurantSchema.statics.getAllRestaurant = function() {
-  return this.find({});
-}
-
-restaurantSchema.statics.updateRestaurantInfor = function(restaurantId,updateInfor) {
-  return this.findByIdAndUpdate(restaurantId, updateInfor, {new:true});
-}
-
-restaurantSchema.statics.deleteRestaurantInfor = function(restaurantId) {
-  return this.deleteOne({ restaurantId });
-}
-
-const RestaurantModel = mongoose.model('restaurantModel',restaurantSchema);
+const RestaurantModel = mongoose.model('restaurantModel', restaurantSchema);
 
 module.exports = RestaurantModel;
