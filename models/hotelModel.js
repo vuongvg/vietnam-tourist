@@ -22,11 +22,7 @@ const hotelSchema = new mongoose.Schema(
             required: [true, "Contact information must be provided"],
             maxlength: [11, "The max length of phone number is only 11"],
             minLength: [10, "The min length of phone number is only 10"],
-            unique: true,
-            // match: [
-            //     /(((\+|)84)|0)(3|5|7|8|9|2)+([0-9]{8|9})\b/,
-            //     "Please enter valid phone number",
-            // ]
+            unique: true
         },
         city: {
             type:String,
@@ -51,6 +47,10 @@ const hotelSchema = new mongoose.Schema(
         },
         evaluate: {
             type:Number,
+        },
+        isFamous: {
+            type:Boolean,
+            default:false
         }
     }, 
     { collection:'hotels', timestamps: true, versionKey: false }
