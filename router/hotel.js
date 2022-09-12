@@ -1,6 +1,6 @@
 const BaseRouter = require("./BaseRouter");
-const hotel= require("../controllers/hotelCtrl");
+const hotelCtrl= require("../controllers/hotelCtrl");
 class HotelRouter extends BaseRouter {}
-const router = new HotelRouter(hotel);
+const router = new HotelRouter(hotelCtrl);
 
 module.exports = router; 

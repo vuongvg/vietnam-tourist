@@ -48,7 +48,7 @@ const hotelSchema = new mongoose.Schema(
         evaluate: {
             type:Number,
         },
-        isFamous: {
+        isfamous: {
             type:String,
             default:"not famous" //famous
         }
