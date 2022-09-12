@@ -1,4 +1,3 @@
-
 exports.errorHandleMdw = (err, req, res, next) => {
    if (err) {
       if (err.name === "ValidationError") {
@@ -11,7 +10,7 @@ exports.errorHandleMdw = (err, req, res, next) => {
          .split("\n")
          .filter((line) => !line.match(/node_modules/))
          .join("\n");
-      console.log("***", err.status, err.message + "\n", stack);
+      // console.log("***", err.status, err.message + "\n", stack);
       req.error = err;
       res.status(err.status).send(err.message);
    } else {

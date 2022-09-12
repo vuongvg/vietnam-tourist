@@ -3,7 +3,7 @@ const userCtrl = require("../controllers/userCtrl");
 const { authMdw } = require("../middlewares/authMdw");
 const router = express.Router();
 
-router.get("/:id", authMdw, async(req, res) => {
+router.get("/:id",(req,res,next)=> authMdw(req,res,next), async(req, res) => {
    try { 
       const userInfor = await userCtrl.getUserInforById(req.params.id);
       res.status(200).json(userInfor);
