@@ -76,7 +76,7 @@ const login = async (username, password) => {
     },
     process.env.MY_PRIVATE_KEY,
     {
-      expiresIn: 60*60*24
+      expiresIn: 1000 * 60 * 60 *24
     }
   )
 

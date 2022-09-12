@@ -6,7 +6,7 @@ const hotelSchema = new mongoose.Schema(
         type:String, 
         required:[true, "Name must be provided"],
         trim:true,
-        maxlength:[50, "Name can not be  more than 50 characters"]
+        maxlength:[50, "Name can not be more than 50 characters"]
         },
         email: { 
             type:String, 
