@@ -1,9 +1,7 @@
-const express = require("express");
-const router = express.Router();
+const restaurantCtrl = require("../controllers/restaurantCtrl");
+const BaseRouter = require("./BaseRouter");
 
-router.get("/", (req, res) => {
-   res.send("router restaurant");
-});
-
+class RestaurantRouter extends BaseRouter {}
+const router = new RestaurantRouter(restaurantCtrl);
 
 module.exports = router;

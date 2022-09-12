@@ -1,27 +1,34 @@
-const hotelDB = require("../db/hotelDb");
+const hotelModel = require("../models/hotelModel");
+const BasePost = require("./BasePost");
 
-const getListHotel = async () => {
-   const hotelsList = await hotelDB.getListHotel();
+class Restaurant extends BasePost {}
+const restaurant = new Restaurant(hotelModel);
 
-   return hotelsList;
-}
+module.exports = restaurant;
+// const hotelDB = require("../db/hotelDb");
 
-const createNewHotel = async (hotelInfor) => {
-   const newHotel = await hotelDB.createNewHotel(hotelInfor);
+// const getListHotel = async () => {
+//    const hotelsList = await hotelDB.getListHotel();
 
-   return newHotel;
-}
+//    return hotelsList;
+// }
 
-const updateHotelInfor = async (hotelId, updateInfor) => {
-   const updatedHotel = await hotelDB.updateHotel(hotelId, updateInfor);
+// const createNewHotel = async (hotelInfor) => {
+//    const newHotel = await hotelDB.createNewHotel(hotelInfor);
 
-   return updatedHotel; 
-}
+//    return newHotel;
+// }
 
-const deleteHotelInfor = async (hotelId) => {
-   const deletedHotel = await hotelDB.deleteHotel(hotelId);
+// const updateHotelInfor = async (hotelId, updateInfor) => {
+//    const updatedHotel = await hotelDB.updateHotel(hotelId, updateInfor);
 
-   return deletedHotel;
-}
+//    return updatedHotel; 
+// }
 
-module.exports = { getListHotel, createNewHotel, updateHotelInfor, deleteHotelInfor };
+// const deleteHotelInfor = async (hotelId) => {
+//    const deletedHotel = await hotelDB.deleteHotel(hotelId);
+
+//    return deletedHotel;
+// }
+
+// module.exports = { getListHotel, createNewHotel, updateHotelInfor, deleteHotelInfor };

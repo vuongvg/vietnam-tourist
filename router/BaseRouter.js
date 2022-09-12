@@ -16,7 +16,6 @@ class BaseRouter extends Router {
       });
 
       this.get("/:id", async (req, res) => {
-         console.log("bbbb");
          const result = await this._findSingleBasePost(req.params.id, req.query.page, req.query.limit);
          res.status(200).json(result);
       });
