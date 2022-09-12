@@ -1,43 +1,46 @@
 const { default: mongoose } = require("mongoose");
 
-const userSchema = new mongoose.Schema({
-   username: { 
-      type:String, 
-      unique:true,
-      required:[true, "Name must be provided"],
-      trim:true,
-      maxlength:[20, "Nam can not be  more than 20 characters"]
-   },
-   email: { 
-      type:String, 
-      unique:true,
-      required:[true, "Email must be provided"],
-      lowercase: true,
-      match: [
-         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-         "Please fill a valid email address",
-      ],
-   },
-   phone: { 
-      type:String,
-      match:[
-         /((09|03|07|08|05)+([0-9]{8})\b)/,
-         "Please enter valid phone number",
-      ]
-   },
-   salt: {
-      type: String,
-   },
-   hash: { 
-      type:String,
-   },
-   avatar: {
-      type:String,
-   },
-   role: {
-      type:String,
-   }
-}, { collection:'users' });
+const userSchema = new mongoose.Schema(
+   {
+      username: { 
+         type:String, 
+         unique:true,
+         required:[true, "Name must be provided"],
+         trim:true,
+         maxlength:[20, "Nam can not be  more than 20 characters"]
+      },
+      email: { 
+         type:String, 
+         unique:true,
+         required:[true, "Email must be provided"],
+         lowercase: true,
+         match: [
+            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+            "Please fill a valid email address",
+         ],
+      },
+      phone: { 
+         type:String,
+         required: [true, "Contact information must be provided"],
+         maxlength: [11, "The max length of phone number is only 11"],
+         minLength: [10, "The min length of phone number is only 10"],
+         unique: true,
+      },
+      salt: {
+         type: String,
+      },
+      hash: { 
+         type:String,
+      },
+      avatar: {
+         type:String,
+      },
+      role: {
+         type:Number,
+      }
+   }, 
+   { collection:'users', timestamps: true, versionKey: false }
+);
 
 userSchema.statics.findUserByName = function(username) {
    return this.find({username: username});
