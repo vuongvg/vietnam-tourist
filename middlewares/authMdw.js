@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { findUserById } = require("../db/userDb");
+const userModel = require("../models/userModel");
 
 const authMdw = (req, res, next) => {
     const bearerToken = req.headers.authorization;
@@ -20,7 +20,7 @@ const authMdw = (req, res, next) => {
                 message:"Session ended, login to implement this function"
             });
         } else {
-            const user = await findUserById(decodedInfo.userId);
+            const user = await userModel.findUserById(decodedInfo.userId);
             req.user = user[0];
             next();
         }
