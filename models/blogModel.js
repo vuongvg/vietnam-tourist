@@ -29,6 +29,19 @@ const BlogSchema = new mongoose.Schema(
       comment: { 
          type: String,
       },
+      createBy: {
+         _id: {
+            type: String,
+            required: [true, "Create by id is required"],
+         },
+         username: {
+            type: String,
+            required: [true, "Create by username is required"],
+         },
+         avatar: {
+            type: String,
+         },
+      },
    },
    { timestamps: true, versionKey: false }
 );

@@ -27,7 +27,7 @@ app.use(notFoundMdw);
 app.use(errorHandleMdw);
 
 connectDb();
-
+ 
 app.listen(port, () => {
    console.log("App is runing at port " + port);
 });

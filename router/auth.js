@@ -30,6 +30,7 @@ router.post("/register", async (req, res) => {
 
       res.send(newUser);
    } catch (err) {
+      console.log(`  ~ err`, err)
       res.send({
          status:400,
          message:"Inserting failed"

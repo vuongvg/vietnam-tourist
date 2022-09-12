@@ -40,7 +40,6 @@ const register = async (username, email, password, phone) => {
     };
   } else {
     const { salt, hashedPassword } = encryptPassword(password);
-
     const insertedUser = await userDB.insertUser({
         username: username,
         email: email,
@@ -49,7 +48,7 @@ const register = async (username, email, password, phone) => {
         hash: hashedPassword,
     });
 
-    return insertedUser;
+    return insertedUser; 
   }
 }
 
