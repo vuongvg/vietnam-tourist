@@ -15,7 +15,7 @@ const authMdw = (req, res, next) => {
 
     jwt.verify(token, process.env.MY_PRIVATE_KEY, async (err, decodedInfo) => {
         if (err) {
-            res.send({
+            res.send({ 
                 status:400,
                 message:"Session ended, login to implement this function"
             });

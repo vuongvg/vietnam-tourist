@@ -6,16 +6,23 @@ const CommentSchema = new mongoose.Schema(
          type: String,
          required: [true, "Id post is required"],
       },
-      username: {
-         type: String,
-         required: [true, "Username is required"],
-      },
-      avatar: {
-         type: String,
-      },
+
       comment: {
          type: String,
          required: [true, "Comment is required"],
+      },
+      createBy: {
+         _id: {
+            type: String,
+            required: [true, "Create by id is required"],
+         },
+         username: {
+            type: String,
+            required: [true, "Create by username is required"],
+         },
+         avatar: {
+            type: String,
+         },
       },
    },
    { timestamps: true, versionKey: false }

@@ -1,7 +1,8 @@
-const { createBasePost, deleteBasePost, findAllBasePost, findSingleBasePost, updateBasePost } = require("../controllers/locationCtrl");
+const location = require("../controllers/locationCtrl");
+const adminMdw = require("../middlewares/adminMdw");
 const BaseRouter = require("./BaseRouter");
 
 class LocationRouter extends BaseRouter {}
-const router = new LocationRouter({ createBasePost, deleteBasePost, findAllBasePost, findSingleBasePost, updateBasePost });
+const router = new LocationRouter({...location,middlewareRole:adminMdw});
 
 module.exports = router;

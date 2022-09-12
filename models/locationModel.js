@@ -17,6 +17,19 @@ const LocationSchema = new mongoose.Schema(
          required: [true, "Description is required"],
          minlength: [6, "Description can not be less than 6 characters"],
       },
+      createBy: {
+         _id: {
+            type: String,
+            required: [true, "Create by id is required"],
+         },
+         username: {
+            type: String,
+            required: [true, "Create by username is required"],
+         },
+         avatar: {
+            type: String,
+         },
+      },
    },
    { timestamps: true, versionKey: false }
 );
