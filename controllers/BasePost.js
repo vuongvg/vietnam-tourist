@@ -9,9 +9,10 @@ class BasePost {
       return await this._model.findOne({ _id });
    };
 
-   findAllBasePost = async (idPost, page = 1, limit = 10) => {
+   findAllBasePost = async (query, page = 1, limit = 10) => {
+      console.log(`  ~ query`, query)
       return this._model
-         .find(idPost ? { idPost } : {})
+         .find(query ?  query  : {})
          .skip((page - 1) * limit)
          .limit(limit);
    };
@@ -25,8 +26,8 @@ class BasePost {
       if (post.createBy._id.toString() !== user._id.toString()) throw customError(405, "Method Not Allowed");
       return this._model.updateOne({ _id }, data);
    };
-
-   deleteBasePost = async (_id, user) => {
+ 
+   deleteBasePost = async (_id, user) => { 
       const post = await this._model.findOne({ _id });
       if (post.createBy._id.toString() !== user._id.toString() && user.role !== "admin") throw customError(405, "Method Not Allowed");
       return this._model.deleteOne({ _id });

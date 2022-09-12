@@ -1,18 +1,18 @@
 const BaseRouter = require("./BaseRouter");
-const { createBasePost, updateBasePost, findAllBasePost, deleteBasePost, findSingleBasePost, findFamousHotels } = require("../controllers/hotelCtrl");
+const hotel= require("../controllers/hotelCtrl");
 
 class HotelRouter extends BaseRouter {
-    constructor({createBasePost, updateBasePost, findAllBasePost, deleteBasePost, findSingleBasePost, findFamousHotels}) {
-        super(createBasePost, updateBasePost, findAllBasePost, deleteBasePost, findSingleBasePost);
-        this._findFamousHotels = findFamousHotels;
+    constructor(hotel) {
+        super(hotel);
+        this._findFamousHotels = hotel.findFamousHotels;
 
         this.get("/famous", async (req, res) => {
-            res.send("famous")
+            res.send("2")
             // const result = await this._findFamousHotels(req.query.page, req.query.limit);
             // res.status(200).json(result);
         });
     }
 }
-const router = new HotelRouter({createBasePost, updateBasePost, findAllBasePost, deleteBasePost, findSingleBasePost, findFamousHotels});
+const router = new HotelRouter(hotel);
 
-module.exports = router;
+module.exports = router; 

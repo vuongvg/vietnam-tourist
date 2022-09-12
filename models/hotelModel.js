@@ -16,7 +16,7 @@ const hotelSchema = new mongoose.Schema(
                 /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
                 "Please fill a valid email address",
             ],
-        },
+        }, 
         phone: { 
             type:String,
             required: [true, "Contact information must be provided"],
@@ -56,18 +56,7 @@ const hotelSchema = new mongoose.Schema(
     { collection:'hotels', timestamps: true, versionKey: false }
 );
 
-hotelSchema.statics.getAllHotels = function() {
-    return this.find({});
-}
 
-hotelSchema.statics.updateHotelInfor = function(hotelId,updateInfor) {
-    return this.findByIdAndUpdate(hotelId, updateInfor, {new:true});
-}
-
-hotelSchema.statics.deleteHotelInfor = function(hotelId) {
-    return this.deleteOne({ hotelId });
-}
-
-const HotelModel = mongoose.model('hotelModel',hotelSchema);
+const HotelModel = mongoose.model('Hotels',hotelSchema);
 
 module.exports = HotelModel;

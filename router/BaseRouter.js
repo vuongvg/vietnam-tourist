@@ -10,7 +10,7 @@ class BaseRouter extends Router {
       this._findAllBasePost = findAllBasePost;
 
       this.get("/", async (req, res) => {
-         const result = await this._findAllBasePost(req.query.idpost, req.query.page, req.query.limit);
+         const result = await this._findAllBasePost(req.query, req.query.page, req.query.limit);
          res.status(200).json(result);
       });
 
