@@ -7,4 +7,4 @@ const adminMiddleware = (req, res, next) => {
 };
 const adminMdw = [authMdw, adminMiddleware];
 
-module.exports = adminMdw;
+module.exports = adminMdw; 
