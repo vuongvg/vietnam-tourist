@@ -30,7 +30,7 @@ const hotelSchema = new mongoose.Schema(
         },
         fullLocation: {
             type: String,
-            required: [true, "Location must be provided"]
+            required: [true, "Location must be provided"] 
         },
         gmaplink: {
             type: String, 
@@ -49,8 +49,8 @@ const hotelSchema = new mongoose.Schema(
             type:Number,
         },
         isFamous: {
-            type:Boolean,
-            default:false
+            type:String,
+            default:'not famous'
         }
     }, 
     { collection:'hotels', timestamps: true, versionKey: false }
