@@ -1,5 +1,4 @@
 const { customError } = require("../errors/customError");
-
 class BasePost {
    constructor(model) {
       this._model = model;

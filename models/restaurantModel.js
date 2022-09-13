@@ -53,13 +53,13 @@ const restaurantSchema = new mongoose.Schema(
         type:Number,
     },
     isfamous: {
-        type:Boolean,
-        default:false
+        type:String,
+        default:"no famous" //famous
     }
   }, 
   { collection:'restaurants', timestamps: true, versionKey: false }
 );
 
-const RestaurantModel = mongoose.model('restaurantModel', restaurantSchema);
+const RestaurantModel = mongoose.model('Restaurants', restaurantSchema);
 
 module.exports = RestaurantModel;

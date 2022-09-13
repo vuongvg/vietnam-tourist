@@ -1,5 +1,4 @@
 const { Router } = require("express");
-
 class BaseRouter extends Router {
    constructor({ createBasePost, deleteBasePost, findAllBasePost, findSingleBasePost, updateBasePost, middlewareRole }) {
       super();

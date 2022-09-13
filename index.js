@@ -6,7 +6,6 @@ const { connectDb } = require("./db/connectDb");
 const { errorHandleMdw } = require("./middlewares/errorHandleMdw");
 const { notFoundMdw } = require("./middlewares/notFound");
 const router = require("./router");
-const BaseRouter = require("./router/BaseRouter");
 
 const port = process.env.PORT;
 const app = express();
@@ -19,7 +18,6 @@ app.use(express.static("/public"));
 app.get("/", (req, res) => {
    res.send("Sever is running");
 });
-
 
 app.use("/api", router);
 

@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema(
          type:String,
       },
       role: {
-         type:Number,
+         type:String,
       }
    }, 
    { collection:'users', timestamps: true, versionKey: false }
@@ -62,6 +62,6 @@ userSchema.statics.updateUserInfor = function(userId,updateInfor) {
    return this.findByIdAndUpdate(userId, updateInfor, {new:true});
 }
 
-const UserModel = mongoose.model('userModel',userSchema);
+const UserModel = mongoose.model('Users',userSchema);
 
 module.exports = UserModel;

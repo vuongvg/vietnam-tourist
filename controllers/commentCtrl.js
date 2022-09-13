@@ -1,6 +1,5 @@
 const commentModel = require("../models/commentModel");
 const BasePost = require("./BasePost");
-
 class Comment extends BasePost {
    findCommentByIdBlog = async (idPost, page = 1, limit = 10) => {
       return await this._model
