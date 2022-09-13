@@ -1,15 +1,13 @@
-const userDB = require("../db/userDb");
+const userModel = require("../models/userModel");
 
-const getUserInforById = async (userID) => {
-   const userInfor = await userDB.findUserById(userID);
-
-   return userInfor;
+const getUserInforById = async (userId) => {
+   const result = await await userModel.findUserById(userId);
+   return result;
 }
 
 const updateUser = async (userId,updateInfor) => {
-   const updatedUser = await userDB.updateUserById(userId,updateInfor);
-
-   return updatedUser;
+   const result = await userModel.updateUserInfor(userId, updateInfor);
+   return result;
 }
 
-module.exports = { updateUser, getUserInforById};
+module.exports = { updateUser, getUserInforById };

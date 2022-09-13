@@ -53,8 +53,8 @@ const restaurantSchema = new mongoose.Schema(
         type:Number,
     },
     isfamous: {
-        type:Boolean,
-        default:false
+        type:String,
+        default:"no famous" //famous
     }
   }, 
   { collection:'restaurants', timestamps: true, versionKey: false }

@@ -48,9 +48,9 @@ const hotelSchema = new mongoose.Schema(
         evaluate: {
             type:Number,
         },
-        isFamous: {
-            type:Boolean,
-            default:false
+        isfamous: {
+            type:String,
+            default:"not famous" //famous
         }
     }, 
     { collection:'hotels', timestamps: true, versionKey: false }

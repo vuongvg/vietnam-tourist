@@ -1,8 +1,6 @@
-const User = require("../models/userModel");
-const { customError } = require("../errors/customError");
+const userModel = require("../models/userModel");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
-const userDB =  require("../db/userDb");
 
 const encryptPassword = (password) => {
   const salt = crypto.randomBytes(128).toString("hex");
@@ -21,8 +19,8 @@ const verifyPassword = (password, userInfor) => {
 }
 
 const register = async (username, email, password, phone) => {
-  const existedUser = await User.findUserByName(username);
-  const registeredEmail = await User.findUserByEmail(email);
+  const existedUser = await userModel.findUserByName(username);
+  const registeredEmail = await userModel.findUserByEmail(email);
   if (existedUser.length) {
     return {
       status:400,
@@ -40,20 +38,22 @@ const register = async (username, email, password, phone) => {
     };
   } else {
     const { salt, hashedPassword } = encryptPassword(password);
-    const insertedUser = await userDB.insertUser({
-        username: username,
-        email: email,
-        phone: phone,
-        salt: salt,
-        hash: hashedPassword,
-    });
 
-    return insertedUser; 
+    var userInfor = {
+      username: username,
+      email: email,
+      phone: phone,
+      salt: salt,
+      hash: hashedPassword,
+      role: 0
+    }
+
+    return newUser = userModel.create(userInfor);
   }
 }
 
 const login = async (username, password) => {
-  const existedUser = await userDB.findUserByName(username);
+  const existedUser = await userModel.findUserByName(username);
     
   if (!existedUser.length) {
     return {

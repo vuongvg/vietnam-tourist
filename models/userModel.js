@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema(
          type:String,
       },
       role: {
-         type:Number,
+         type:String,
       }
    }, 
    { collection:'users', timestamps: true, versionKey: false }
