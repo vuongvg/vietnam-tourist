@@ -9,7 +9,6 @@ class BasePost {
    };
 
    findAllBasePost = async (query, page = 1, limit = 10) => {
-      console.log(`  ~ query`, query)
       return this._model
          .find(query ?  query  : {})
          .skip((page - 1) * limit)

@@ -9,6 +9,11 @@ const router = require("./router");
 
 const port = process.env.PORT;
 const app = express();
+app.use(
+   cors({
+      origin: "*",
+   })
+);
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(bodyParser.json());
