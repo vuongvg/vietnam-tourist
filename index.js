@@ -1,7 +1,8 @@
-require("dotenv").config();
+// require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+const cors = require("cors");
 const { connectDb } = require("./db/connectDb");
 const { errorHandleMdw } = require("./middlewares/errorHandleMdw");
 const { notFoundMdw } = require("./middlewares/notFound");
