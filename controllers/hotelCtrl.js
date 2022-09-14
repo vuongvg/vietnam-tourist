@@ -1,6 +1,5 @@
 const hotelModel = require("../models/hotelModel");
 const BasePost = require("./BasePost");
-
 class Hotel extends BasePost {
     constructor(model){
         super(model)

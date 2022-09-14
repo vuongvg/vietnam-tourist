@@ -1,6 +1,5 @@
 const restaurantModel = require("../models/restaurantModel");
 const BasePost = require("./BasePost");
-
 class Restaurant extends BasePost {
   constructor(model){
     super(model)

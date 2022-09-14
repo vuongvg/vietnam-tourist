@@ -62,6 +62,6 @@ userSchema.statics.updateUserInfor = function(userId,updateInfor) {
    return this.findByIdAndUpdate(userId, updateInfor, {new:true});
 }
 
-const UserModel = mongoose.model('userModel',userSchema);
+const UserModel =new mongoose.model('Users',userSchema);
 
 module.exports = UserModel;
