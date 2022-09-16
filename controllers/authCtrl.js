@@ -18,38 +18,38 @@ const verifyPassword = (password, userInfor) => {
    return hashedPassword === userInfor.hash;
 };
 
-const register = async (username, email, password, phone) => {
-   const existedUser = await userModel.findUserByName(username);
-   const registeredEmail = await userModel.findUserByEmail(email);
-   if (existedUser.length) {
-      return {
-         status: 400,
-         message: "Username has been registered",
-      };
-   } else if (registeredEmail.length) {
-      return {
-         status: 400,
-         message: "Email has been registered",
-      };
-   } else if (!password || password.length < 6) {
-      return {
-         status: 400,
-         message: "Email has been registered",
-      };
-   } else {
-      const { salt, hashedPassword } = encryptPassword(password);
+const register = async (username, email, password) => {
+  const existedUser = await userModel.findUserByName(username);
+  const registeredEmail = await userModel.findUserByEmail(email);
+  if (existedUser.length) {
+    return {
+      status:400,
+      message:"Username has been registered"
+    };
+  } else if (registeredEmail.length) {
+    return {
+      status: 400,
+      message:"Email has been registered"
+    };
+  } else if (!password || password.length <6) {
+    return {
+      status: 400,
+      message:"Email has been registered"
+    };
+  } else {
+    const { salt, hashedPassword } = encryptPassword(password);
 
-      var userInfor = {
-         username: username,
-         email: email,
-         phone: phone,
-         salt: salt,
-         hash: hashedPassword,
-         role: 0,
-      };
+    var userInfor = {
+        username: username,
+        email: email,
+        phone: phone,
+        salt: salt,
+        hash: hashedPassword,
+        role: 0,
+    };
 
-      return (newUser = userModel.create(userInfor));
-   }
+    return (newUser = userModel.create(userInfor));
+  }
 };
 
 const login = async (username, password) => {
