@@ -24,13 +24,11 @@ router.post("/register", async (req, res) => {
       const newUser = await AuthCtrl.register(
          req.body.username,
          req.body.email,
-         req.body.password,
-         req.body.phone
+         req.body.password
       );
 
       res.send(newUser);
    } catch (err) {
-      console.log(`  ~ err`, err)
       res.send({
          status:400,
          message:"Inserting failed"

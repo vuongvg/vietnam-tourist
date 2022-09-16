@@ -18,7 +18,7 @@ const verifyPassword = (password, userInfor) => {
   return hashedPassword === userInfor.hash;
 }
 
-const register = async (username, email, password, phone) => {
+const register = async (username, email, password) => {
   const existedUser = await userModel.findUserByName(username);
   const registeredEmail = await userModel.findUserByEmail(email);
   if (existedUser.length) {
