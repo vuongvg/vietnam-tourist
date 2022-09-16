@@ -60,6 +60,6 @@ const restaurantSchema = new mongoose.Schema(
   { collection:'restaurants', timestamps: true, versionKey: false }
 );
 
-const RestaurantModel = mongoose.model('restaurantModel', restaurantSchema);
+const RestaurantModel =new mongoose.model('Restaurants', restaurantSchema);
 
 module.exports = RestaurantModel;
