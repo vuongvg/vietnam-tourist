@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 //const customError = require("../errors/customError");
 const AuthCtrl = require("../controllers/authCtrl");
+const { asyncWrapper } = require("../middlewares/asyncWrapper");
 
-router.post("/login", async (req, res) => {
+router.post("/login", asyncWrapper(async (req, res) => {
    try {
       const loginStatus = await AuthCtrl.login(
          req.body.username,
@@ -17,9 +18,9 @@ router.post("/login", async (req, res) => {
          message:"Login failed"
       });
    }
-});
+}));
 
-router.post("/register", async (req, res) => {
+router.post("/register", asyncWrapper(async (req, res) => {
    try {
       const newUser = await AuthCtrl.register(
          req.body.username,
@@ -36,6 +37,6 @@ router.post("/register", async (req, res) => {
          message:"Inserting failed"
       });
    }
-});
+}));
 
 module.exports = router;

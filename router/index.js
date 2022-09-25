@@ -1,22 +1,22 @@
-const express=require("express")
-const { asyncWrapper } = require("../middlewares/asyncWrapper")
-const router=express.Router()
-const authRouter=require('./auth')
-const blogRouter=require('./blog')
-const userRouter=require('./user')
-const hotelRouter=require('./hotel')
-const tourRouter=require('./tour')
-const restaurantRouter=require('./restaurant')
-const locationRouter=require('./location')
-const commentRouter=require('./comment')
+const express = require("express");
 
-router.use('/tour',asyncWrapper(tourRouter))
-router.use('/location',asyncWrapper(locationRouter))
-router.use('/restaurant',asyncWrapper(restaurantRouter))
-router.use('/hotel',asyncWrapper(hotelRouter))
-router.use('/user',asyncWrapper(userRouter))
-router.use('/auth',asyncWrapper(authRouter))
-router.use('/blog',asyncWrapper(blogRouter))
-router.use('/comment',asyncWrapper(commentRouter))
+const router = express.Router();
+const authRouter = require("./auth");
+const blogRouter = require("./blog");
+const userRouter = require("./user");
+const hotelRouter = require("./hotel");
+const tourRouter = require("./tour");
+const restaurantRouter = require("./restaurant");
+const locationRouter = require("./location");
+const commentRouter = require("./comment");
 
-module.exports=router 
+router.use("/tour", tourRouter);
+router.use("/location", locationRouter);
+router.use("/restaurant", restaurantRouter);
+router.use("/hotel", hotelRouter);
+router.use("/user", userRouter);
+router.use("/auth", authRouter);
+router.use("/blog", blogRouter);
+router.use("/comment", commentRouter);
+
+module.exports = router;
