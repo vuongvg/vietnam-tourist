@@ -7,12 +7,24 @@ class BasePost {
       };
 
       this.findAllBasePost = async (query, page = 1, limit = 10) => {
-       const  data= await this._model
-            .find(query ? query : {})
+         const [fieldRange, min, max] = query.range ? JSON.parse(query.range) : [null, null, null];
+         const [fieldSearch, keyword] = query.search ? JSON.parse(query.search) : [null, null];
+         const entry = {
+            $and: [
+               query.range ? { [fieldRange]: { $gte: min, $lte: max } } : {},
+               query.filter ? JSON.parse(query.filter) : {},
+               query.search ? { [fieldSearch]: { $regex: RegExp(keyword), $options: "i" } } : {},
+            ],
+         };
+
+         const data = await this._model
+            .find(entry)
+            .sort(query.sort && JSON.parse(query.sort))
             .skip((page - 1) * limit)
-            .limit(limit).lean();
-            const total=await this._model.countDocuments()
-            return {data,total}
+            .limit(limit)
+            .lean();
+         const total = await this._model.countDocuments(entry);
+         return { data, total };
       };
 
       this.createBasePost = async (data) => {
