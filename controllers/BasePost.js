@@ -3,10 +3,10 @@ class BasePost {
    constructor(model) {
       this._model = model;
       this.findSingleBasePost = async (_id) => {
-         return await this._model.findOne({ _id });
+         return await this._model.findOne({ _id }).lean();
       };
 
-      this.findAllBasePost = async (query, page = 1, limit = 10) => {
+      this.findAllBasePost = async (query, page, limit) => {
          const [fieldRange, min, max] = query.range ? JSON.parse(query.range) : [null, null, null];
          const [fieldSearch, keyword] = query.search ? JSON.parse(query.search) : [null, null];
          const entry = {
@@ -23,6 +23,7 @@ class BasePost {
             .skip((page - 1) * limit)
             .limit(limit)
             .lean();
+
          const total = await this._model.countDocuments(entry);
          return { data, total };
       };
@@ -33,7 +34,7 @@ class BasePost {
 
       this.updateBasePost = async (_id, data, user) => {
          const post = await this._model.findOne({ _id });
-         if (post.createBy._id.toString() !== user._id.toString()) throw customError(405, "Method Not Allowed");
+         if (post.createBy._id.toString() !== user._id.toString() && user.role !== "admin") throw customError(405, "Method Not Allowed");
          return this._model.updateOne({ _id }, data);
       };
 

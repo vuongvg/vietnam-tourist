@@ -12,16 +12,15 @@ class BaseRouter extends Router {
       this.get(
          "/",
          asyncWrapper(async (req, res) => {
-            const { page = 1, limit = 10} = req.query;
+            const { page = 1, limit = 10 } = req.query;
             const result = await this._findAllBasePost(req.query, page, limit);
             res.header("Access-Control-Allow-Origin", "*");
-            res.setHeader("Access-Control-Expose-Headers", "X-Total-Count,Content-Range,X-Count");
+            res.setHeader("Access-Control-Expose-Headers", "X-Total-Count,Content-Range,X-Count,X-Total-Page");
             res.setHeader("X-Total-Count", result.total);
+            res.setHeader("X-Total-Page", result.total % limit ? Math.floor(result.total / limit) + 1 : result.total / limit);
             res.setHeader("X-Count", result.data.length);
             res.setHeader("Content-Range", `posts ${(+page - 1) * +limit} - ${(+page - 1) * +limit + result.data.length}/${result.total}`);
-            // console.log(`  ~ (+page - 1) * +limit`, (+page - 1) * +limit)
-            res.status(200).json(result.data.map((item) => ({ ...item, id: item._id })));
-            // res.status(200).json(result.data);
+            res.status(200).json(result.data);
          })
       );
 
@@ -29,7 +28,7 @@ class BaseRouter extends Router {
          "/:id",
          asyncWrapper(async (req, res) => {
             const result = await this._findSingleBasePost(req.params.id, req.query.page, req.query.limit);
-            res.status(200).json({ ...result, id: result._id });
+            res.status(200).json(result);
          })
       );
 
@@ -38,16 +37,17 @@ class BaseRouter extends Router {
       this.post(
          "/",
          asyncWrapper(async (req, res) => {
-            const result = await this._createBasePost({ ...req.body, createBy: req.user });
+            const result = "sss";
+            // await this._createBasePost({ ...req.body, createBy: req.user });
             res.status(201).json(result);
          })
       );
 
-      this.patch(
+      this.put(
          "/:id",
          asyncWrapper(async (req, res) => {
             const result = await this._updateBasePost(req.params.id, req.body, req.user);
-            res.status(200).json(result);
+            res.status(200).json({ ...result, id: req.params.id });
          })
       );
 
