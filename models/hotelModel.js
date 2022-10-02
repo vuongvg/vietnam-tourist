@@ -49,6 +49,19 @@ const hotelSchema = new mongoose.Schema(
          type: String,
          default: "not famous", //famous
       },
+      createBy: {
+         _id: {
+            type: String,
+            required: [true, "Create by id is required"],
+         },
+         username: {
+            type: String,
+            required: [true, "Create by username is required"],
+         },
+         avatar: {
+            type: String,
+         },
+      },
    },
    { collection: "hotels", timestamps: true, versionKey: false }
 );
