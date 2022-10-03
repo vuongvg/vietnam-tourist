@@ -37,8 +37,7 @@ class BaseRouter extends Router {
       this.post(
          "/",
          asyncWrapper(async (req, res) => {
-            const result = "sss";
-            // await this._createBasePost({ ...req.body, createBy: req.user });
+            const result = await this._createBasePost({ ...req.body, createBy: req.user });
             res.status(201).json(result);
          })
       );
