@@ -1,7 +1,8 @@
 exports.errorHandleMdw = (err, req, res, next) => {
    if (err) {
       if (err.name === "ValidationError") {
-         Object.keys(err.errors).map((name) => (err.errors[name] = err.errors[name].properties.message));
+         console.log(`  ~ err`, err.errors)
+         Object.keys(err.errors).map((name) => (err.errors[name] = err.errors[name].properties?.message|| err.errors[name].reason?.message));
          console.log(`  ~ err.errors`, err.errors);
          res.status(400).send(err);
          return;

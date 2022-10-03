@@ -7,10 +7,12 @@ class BasePost {
       };
 
       this.findAllBasePost = async (query, page, limit) => {
+         console.log(`  ~ exclude`, query.exclude)
          const [fieldRange, min, max] = query.range ? JSON.parse(query.range) : [null, null, null];
          const [fieldSearch, keyword] = query.search ? JSON.parse(query.search) : [null, null];
          const entry = {
             $and: [
+               query.exclude?{_id:{$ne: query.exclude}}:{},
                query.range ? { [fieldRange]: { $gte: min, $lte: max } } : {},
                query.filter ? JSON.parse(query.filter) : {},
                query.search ? { [fieldSearch]: { $regex: RegExp(keyword), $options: "i" } } : {},
