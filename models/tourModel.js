@@ -56,7 +56,7 @@ const TourSchema = new mongoose.Schema(
          },
       },
    },
-   { timestamps: true, versionKey: false }
+   { timestamps: true, versionKey: false, strictQuery: false }
 );
 
 const Tour = new mongoose.model("Tours", TourSchema);

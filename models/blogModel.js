@@ -26,7 +26,7 @@ const BlogSchema = new mongoose.Schema(
          type: Number,
          default: 0,
       },
-      comment: { 
+      comment: {
          type: String,
       },
       createBy: {
@@ -43,7 +43,7 @@ const BlogSchema = new mongoose.Schema(
          },
       },
    },
-   { timestamps: true, versionKey: false }
+   { timestamps: true, versionKey: false, strictQuery: false }
 );
 
 const Blog = new mongoose.model("Blogs", BlogSchema);

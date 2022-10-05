@@ -63,9 +63,9 @@ const hotelSchema = new mongoose.Schema(
          },
       },
    },
-   { collection: "hotels", timestamps: true, versionKey: false }
+   { collection: "hotels", timestamps: true, versionKey: false, strictQuery: false }
 );
 
-const HotelModel =new mongoose.model("Hotels", hotelSchema);
+const HotelModel = new mongoose.model("Hotels", hotelSchema);
 
 module.exports = HotelModel;
