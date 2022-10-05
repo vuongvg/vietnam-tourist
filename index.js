@@ -28,6 +28,7 @@ app.get("/", (req, res) => {
    res.send("Sever is running");
 });
 
+
 app.use("/api", router);
 
 app.use(notFoundMdw);
