@@ -18,28 +18,18 @@ class BasePost {
                query.search ? { [fieldSearch]: { $regex: RegExp(keyword), $options: "i" } } : {},
             ],
          };
-         console.log(`  ~ entry`, JSON.stringify(entry));
 
-         // const data = await this._model
-         //    .find(entry)
-         //    .sort(query.sort && JSON.parse(query.sort))
-         //    .skip((page - 1) * limit)
-         //    .limit(limit)
-         //    .lean();
-
-         // const total = await this._model.countDocuments(entry);
          const [data, total] = await Promise.all([
             this._model
                .find(entry)
-               // .sort(query.sort && JSON.parse(query.sort))
-               // .skip((page - 1) * limit)
-               // .limit(limit)
-               // .lean()
+               .sort(query.sort && JSON.parse(query.sort))
+               .skip((page - 1) * limit)
+               .limit(limit)
+               .lean()
                ,
             this._model.countDocuments(entry),
          ]);
 
-         console.log(`  ~ total`, total);
          return { data, total };
       };
 
