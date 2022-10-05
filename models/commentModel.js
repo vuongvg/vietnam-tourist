@@ -25,7 +25,7 @@ const CommentSchema = new mongoose.Schema(
          },
       },
    },
-   { timestamps: true, versionKey: false }
+   { timestamps: true, versionKey: false, strictQuery: false }
 );
 
 const Comment = new mongoose.model("Comments", CommentSchema);
