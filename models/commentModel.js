@@ -21,7 +21,7 @@ const CommentSchema = new mongoose.Schema(
             required: [true, "Create by username is required"],
          },
          avatar: {
-            type: String,
+            src: { type: String },
          },
       },
    },
