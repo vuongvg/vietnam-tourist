@@ -2,18 +2,13 @@ const { default: mongoose } = require("mongoose");
 
 const restaurantSchema = new mongoose.Schema(
    {
-      restaurantname: {
+      title: {
          type: String,
-         required: [true, "Restaurant name must be provided"],
+         required: [true, "Title is required"],
          trim: true,
          maxlength: [50, "Restaurant name can not be  more than 50 characters"],
       },
-      email: {
-         type: String,
-         unique: true,
-         lowercase: true,
-         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Please fill a valid email address"],
-      },
+
       phone: {
          type: String,
          required: [true, "Contact information must be provided"],
@@ -24,6 +19,12 @@ const restaurantSchema = new mongoose.Schema(
          //     /(((\+|)84)|0)(3|5|7|8|9|2)+([0-9]{8|9})\b/,
          //     "Please enter valid phone number",
          // ]
+      },
+      email: {
+         type: String,
+         unique: true,
+         lowercase: true,
+         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Please fill a valid email address"],
       },
       city: {
          type: String,
@@ -36,12 +37,7 @@ const restaurantSchema = new mongoose.Schema(
       gmaplink: {
          type: String,
       },
-      avatar: {
-         type: String,
-      },
-      album: {
-         type: Array,
-      },
+
       description: {
          type: String,
          required: [true, "Description must be provided"],
@@ -66,6 +62,10 @@ const restaurantSchema = new mongoose.Schema(
             type: String,
          },
       },
+      avatar: {
+         src: { type: String },
+      },
+      album: [{ src: { type: String } }],
    },
    { collection: "restaurants", timestamps: true, versionKey: false, strictQuery: false }
 );
