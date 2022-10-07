@@ -26,6 +26,10 @@ const TourSchema = new mongoose.Schema(
          type: String,
          required: [true, "Location is required"],
       },
+      province :{
+         type: String,
+         required: [true, "Location is required"],
+      },
       price: {
          type: Number,
          required: [true, "Price is required"],
