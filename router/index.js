@@ -9,6 +9,7 @@ const tourRouter = require("./tour");
 const restaurantRouter = require("./restaurant");
 const locationRouter = require("./location");
 const commentRouter = require("./comment");
+const adminRouter = require("./admin");
 
 router.use("/tour", tourRouter);
 router.use("/location", locationRouter);
@@ -18,5 +19,6 @@ router.use("/user", userRouter);
 router.use("/auth", authRouter);
 router.use("/blog", blogRouter);
 router.use("/comment", commentRouter);
+router.use("/admin", adminRouter); 
 
 module.exports = router;

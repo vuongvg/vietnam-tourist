@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-//const customError = require("../errors/customError");
 const AuthCtrl = require("../controllers/authCtrl");
 const { asyncWrapper } = require("../middlewares/asyncWrapper");
 
