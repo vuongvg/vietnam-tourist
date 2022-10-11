@@ -65,6 +65,7 @@ const hotelSchema = new mongoose.Schema(
    },
    { collection: "hotels", timestamps: true, versionKey: false, strictQuery: false }
 );
+hotelSchema.index({ "$**": "text" }, { name: "TextIndex" });
 
 const HotelModel = new mongoose.model("Hotels", hotelSchema);
 

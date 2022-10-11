@@ -1,6 +1,6 @@
 const { default: mongoose } = require("mongoose");
 
-const BlogSchema = new mongoose.Schema(
+const blogSchema = new mongoose.Schema(
    {
       title: {
          type: String,
@@ -45,7 +45,8 @@ const BlogSchema = new mongoose.Schema(
    },
    { timestamps: true, versionKey: false, strictQuery: false }
 );
+blogSchema.index({ "$**": "text" }, { name: "TextIndex" });
 
-const Blog = new mongoose.model("Blogs", BlogSchema);
+const Blog = new mongoose.model("Blogs", blogSchema);
 
 module.exports = Blog;

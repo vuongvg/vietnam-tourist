@@ -1,6 +1,6 @@
 const { default: mongoose } = require("mongoose");
 
-const LocationSchema = new mongoose.Schema(
+const locationSchema = new mongoose.Schema(
    {
       title: {
          type: String,
@@ -33,7 +33,8 @@ const LocationSchema = new mongoose.Schema(
    },
    { timestamps: true, versionKey: false, strictQuery: false }
 );
+locationSchema.index({ "$**": "text" }, { name: "TextIndex" });
 
-const Location = new mongoose.model("Locations", LocationSchema);
+const Location = new mongoose.model("Locations", locationSchema);
 
 module.exports = Location;
