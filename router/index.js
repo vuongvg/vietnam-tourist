@@ -10,6 +10,7 @@ const restaurantRouter = require("./restaurant");
 const locationRouter = require("./location");
 const commentRouter = require("./comment");
 const adminRouter = require("./admin");
+const searchRouter = require("./search");
 
 router.use("/tour", tourRouter);
 router.use("/location", locationRouter);
@@ -20,5 +21,6 @@ router.use("/auth", authRouter);
 router.use("/blog", blogRouter);
 router.use("/comment", commentRouter);
 router.use("/admin", adminRouter); 
+router.use("/search", searchRouter); 
 
 module.exports = router;

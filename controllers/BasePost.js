@@ -27,7 +27,7 @@ class BasePost {
                .limit(limit)
                .lean()
                ,
-            this._model.countDocuments(entry),
+            this._model.count(entry),
          ]);
 
          return { data, total };

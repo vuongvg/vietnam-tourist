@@ -69,6 +69,7 @@ const restaurantSchema = new mongoose.Schema(
    },
    { collection: "restaurants", timestamps: true, versionKey: false, strictQuery: false }
 );
+restaurantSchema.index({ "$**": "text" }, { name: "TextIndex" });
 
 const RestaurantModel = new mongoose.model("Restaurants", restaurantSchema);
 

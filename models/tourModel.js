@@ -1,6 +1,6 @@
 const { default: mongoose } = require("mongoose");
 
-const TourSchema = new mongoose.Schema(
+const tourSchema = new mongoose.Schema(
    {
       title: {
          type: String,
@@ -62,7 +62,8 @@ const TourSchema = new mongoose.Schema(
    },
    { timestamps: true, versionKey: false, strictQuery: false }
 );
+tourSchema.index({ "$**": "text" }, { name: "TextIndex" });
 
-const Tour = new mongoose.model("Tours", TourSchema);
+const Tour = new mongoose.model("Tours", tourSchema);
 
 module.exports = Tour;
