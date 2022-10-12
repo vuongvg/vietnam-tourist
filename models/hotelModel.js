@@ -62,6 +62,10 @@ const hotelSchema = new mongoose.Schema(
             src: { type: String },
          },
       },
+      typePost:{
+         type: String,
+         default: "hotel",
+      }
    },
    { collection: "hotels", timestamps: true, versionKey: false, strictQuery: false }
 );
