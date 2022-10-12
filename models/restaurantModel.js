@@ -66,6 +66,10 @@ const restaurantSchema = new mongoose.Schema(
          src: { type: String },
       },
       album: [{ src: { type: String } }],
+      typePost:{
+         type: String,
+         default: "restaurants",
+      }
    },
    { collection: "restaurants", timestamps: true, versionKey: false, strictQuery: false }
 );

@@ -8,6 +8,7 @@ const TourModel = require("../models/tourModel");
 const searchAllPostByKeyword = async (keyword, page, limit, sort) => {
    const listModel = [HotelModel, BlogModel, TourModel, RestaurantModel, LocationModel];
    const [...result] = await Promise.all(listModel.map((model) => model.find({ $text: { $search: keyword.replace("_", " ") } }).lean()));
+   console.log(`  ~ result`, result)
    return {
       data: result.flat().filter(({ _id }) => _id).slice((page-1)*limit,page*limit),
       total: result.flat().length

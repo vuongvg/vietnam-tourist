@@ -30,6 +30,10 @@ const locationSchema = new mongoose.Schema(
             src: { type: String },
          },
       },
+      typePost:{
+         type: String,
+         default: "location",
+      }
    },
    { timestamps: true, versionKey: false, strictQuery: false }
 );

@@ -42,6 +42,10 @@ const blogSchema = new mongoose.Schema(
             src: { type: String },
          },
       },
+      typePost:{
+         type: String,
+         default: "blog",
+      }
    },
    { timestamps: true, versionKey: false, strictQuery: false }
 );

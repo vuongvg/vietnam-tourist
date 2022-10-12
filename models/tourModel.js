@@ -59,6 +59,10 @@ const tourSchema = new mongoose.Schema(
             src: { type: String },
          },
       },
+      typePost:{
+         type: String,
+         default: "tour",
+      }
    },
    { timestamps: true, versionKey: false, strictQuery: false }
 );
