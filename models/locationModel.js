@@ -9,8 +9,10 @@ const locationSchema = new mongoose.Schema(
          maxlength: [100, "Title can not be more than 50 characters"],
       },
       avatar: {
-         type: String,
-         required: [true, "Avatar is required"],
+         src:{
+            type: String,
+            required: [true, "Avatar is required"],
+         }
       },
       description: {
          type: String,

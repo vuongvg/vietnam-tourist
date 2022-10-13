@@ -8,6 +8,7 @@ const { errorHandleMdw } = require("./middlewares/errorHandleMdw");
 const { notFoundMdw } = require("./middlewares/notFound");
 const router = require("./router");
 const path = require("path");
+const swaggerJSDoc = require("swagger-jsdoc");
 
 const port = process.env.PORT;
 const app = express();
@@ -24,7 +25,7 @@ app.use(bodyParser.json());
 
 app.get("/", (req, res) => { 
    res.send("Sever is running");
-});
+}); 
 
 app.use("/api", router);
 
@@ -36,3 +37,5 @@ connectDb();
 app.listen(port, () => {
    console.log("App is runing at port " + port);
 });
+
+// const swaggerJSDoc

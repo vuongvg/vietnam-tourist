@@ -26,7 +26,7 @@ const tourSchema = new mongoose.Schema(
          type: String,
          required: [true, "Location is required"],
       },
-      province :{
+      province: {
          type: String,
          required: [true, "Location is required"],
       },
@@ -56,13 +56,19 @@ const tourSchema = new mongoose.Schema(
             required: [true, "Create by username is required"],
          },
          avatar: {
-            src: { type: String },
+            type: String,
          },
       },
-      typePost:{
+      avatar: {
+         src: {
+            type: String,
+            required: [true, "Avatar is required"],
+         },
+      },
+      typePost: {
          type: String,
          default: "tour",
-      }
+      },
    },
    { timestamps: true, versionKey: false, strictQuery: false }
 );

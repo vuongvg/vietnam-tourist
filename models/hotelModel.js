@@ -33,7 +33,10 @@ const hotelSchema = new mongoose.Schema(
          type: String,
       },
       avatar: {
-         type: String,
+         src:{
+            type: String,
+            required: [true, "Avatar is required"],
+         }
       },
       album: {
          type: Array,
