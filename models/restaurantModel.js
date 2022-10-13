@@ -63,7 +63,10 @@ const restaurantSchema = new mongoose.Schema(
          },
       },
       avatar: {
-         src: { type: String },
+         src:{
+            type: String,
+            required: [true, "Avatar is required"],
+         }
       },
       album: [{ src: { type: String } }],
       typePost:{

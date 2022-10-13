@@ -45,7 +45,7 @@ class BasePost {
 
       this.deleteBasePost = async (_id, user) => {
          const post = await this._model.findOne({ _id });
-         if (post.createBy._id.toString() !== user._id.toString() && user.role !== "admin") throw customError(405, "Method Not Allowed");
+         if (post.createBy._id?.toString() !== user._id.toString() && user.role !== "admin") throw customError(405, "Method Not Allowed");
          return this._model.deleteOne({ _id });
       };
    }

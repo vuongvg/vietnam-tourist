@@ -14,8 +14,10 @@ const blogSchema = new mongoose.Schema(
          minlength: [6, "Content can not be less than 6 characters"],
       },
       avatar: {
-         type: String,
-         required: [true, "Avatar is required"],
+         src:{
+            type: String,
+            required: [true, "Avatar is required"],
+         }
       },
       description: {
          type: String,
