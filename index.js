@@ -24,8 +24,23 @@ const swaggerSpec = swaggerJSDoc({
       servers: [
          {
             // url: process.env.URL,
-            url: 'http://localhost:5001/api',
-            description: 'Development server',
+            url: "http://localhost:5001/api",
+            description: "Development server",
+         },
+      ],
+      basePath: "/",
+      components: {
+         securitySchemes: {
+            bearerAuth: {
+               type: "http",
+               scheme: "bearer",
+               bearerFormat: "JWT",
+            },
+         },
+      },
+      security: [
+         {
+            bearerAuth: ['eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzFlYWVmMWY5YjAzNjRkOTQ0YTliZWIiLCJpYXQiOjE2NjUzMzMwNjcsImV4cCI6MTc1MTczMzA2N30.yw3Xbzj2HmatVk6zmxcP1rhOzIE5CIuMvHC0EbV5eVw'],
          },
       ],
    },
