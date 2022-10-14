@@ -16,7 +16,8 @@ exports.errorHandleMdw = (err, req, res, next) => {
       
       req.error = err;
       // console.log(`  ~ err`, err)
-      res.status(err.status).send(err.message);
+      res.status(err.status).send(err);
+      // res.status(err.status).send(err.message);
    } else {
       next();
    }
