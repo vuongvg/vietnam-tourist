@@ -2,11 +2,11 @@ const { default: mongoose } = require("mongoose");
 
 const hotelSchema = new mongoose.Schema(
    {
-      hotelname: {
+      title: {
          type: String,
-         required: [true, "Name must be provided"],
+         required: [true, "Title must be provided"],
          trim: true,
-         maxlength: [50, "Name can not be more than 50 characters"],
+         maxlength: [50, "Title can not be more than 50 characters"],
       },
       email: {
          type: String,

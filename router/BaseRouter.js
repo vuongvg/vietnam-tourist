@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const { asyncWrapper } = require("../middlewares/asyncWrapper");
+
 class BaseRouter extends Router {
    constructor({ createBasePost, deleteBasePost, findAllBasePost, findSingleBasePost, updateBasePost, middlewareRole }) {
       super();
