@@ -34,7 +34,6 @@ app.get("/", (req, res) => {
 
 app.use("/api", router);
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-console.log(`  ~ docs`, )
 
 app.use(notFoundMdw);
 app.use(errorHandleMdw);
