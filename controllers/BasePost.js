@@ -3,7 +3,8 @@ class BasePost {
    constructor(model) {
       this._model = model;
       this.findSingleBasePost = async (_id) => {
-         return await this._model.findOne({ _id }).lean();
+         const result = await this._model.findOne({ _id }).lean();
+         return result;
       };
 
       this.findAllBasePost = async (query, page, limit) => {
@@ -15,7 +16,7 @@ class BasePost {
                query.exclude ? { _id: { $ne: query.exclude } } : {},
                query.range ? { [fieldRange]: { $gte: min, $lte: max } } : {},
                query.filter ? JSON.parse(query.filter) : {},
-               query.search ? { [fieldSearch]: { $regex: RegExp(keyword), $options: "i" } } : {},
+               query.search ? { [fieldSearch]: { $regex: RegExp(keyword.replace("_", " ")), $options: "i" } } : {},
             ],
          };
 
@@ -25,8 +26,7 @@ class BasePost {
                .sort(query.sort && JSON.parse(query.sort))
                .skip((page - 1) * limit)
                .limit(limit)
-               .lean()
-               ,
+               .lean(),
             this._model.count(entry),
          ]);
 

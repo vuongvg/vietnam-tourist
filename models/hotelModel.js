@@ -11,7 +11,7 @@ const hotelSchema = new mongoose.Schema(
       email: {
          type: String,
          required: [true, "Email must be provided"],
-         unique: true,
+         // unique: true,
          lowercase: true,
          match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Please fill a valid email address"],
       },
@@ -20,7 +20,7 @@ const hotelSchema = new mongoose.Schema(
          required: [true, "Contact information must be provided"],
          maxlength: [11, "The max length of phone number is only 11"],
          minLength: [10, "The min length of phone number is only 10"],
-         unique: true,
+         // unique: true,
       },
       city: {
          type: String,
@@ -75,6 +75,6 @@ const hotelSchema = new mongoose.Schema(
 );
 hotelSchema.index({ "$**": "text" }, { name: "TextIndex" });
 
-const HotelModel = new mongoose.model("Hotels", hotelSchema);
-
+const HotelModel = new mongoose.model("Hotels", hotelSchema); 
+ 
 module.exports = HotelModel;

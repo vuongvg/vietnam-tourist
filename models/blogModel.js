@@ -14,10 +14,10 @@ const blogSchema = new mongoose.Schema(
          minlength: [6, "Content can not be less than 6 characters"],
       },
       avatar: {
-         src:{
+         src: {
             type: String,
             required: [true, "Avatar is required"],
-         }
+         },
       },
       description: {
          type: String,
@@ -44,10 +44,10 @@ const blogSchema = new mongoose.Schema(
             src: { type: String },
          },
       },
-      typePost:{
+      typePost: {
          type: String,
          default: "blog",
-      }
+      },
    },
    { timestamps: true, versionKey: false, strictQuery: false }
 );
