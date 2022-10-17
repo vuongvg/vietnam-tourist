@@ -15,6 +15,9 @@ const swaggerUi = require("swagger-ui-express");
 const port = process.env.PORT;
 const app = express();
 
+// "url": "http://localhost:5001/api",
+// "url": "https://vietnam-tourist.vercel.app/",
+
 const swaggerSpec = swaggerJSDoc(swaggerDocument);
 
 app.use(cors(false));
@@ -26,7 +29,7 @@ app.use(bodyParser.json());
 // app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-   res.send("Sever is running"); 
+   res.send("Sever is running");
 });
 
 app.use("/api", router);
@@ -37,6 +40,6 @@ app.use(errorHandleMdw);
 
 connectDb().then(() =>
    app.listen(port, () => {
-      console.log("App is runing at port " + port);
+      console.log("App is runing at port : " + port);
    })
 );
