@@ -7,7 +7,7 @@
       },
       "servers": [
          {
-            "url": "https://vietnam-tourist.vercel.app/",
+            "url": "https://vietnam-tourist.vercel.app/api",
             "description": "Development server"
          }
       ],
