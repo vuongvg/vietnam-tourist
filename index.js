@@ -40,6 +40,6 @@ app.use(errorHandleMdw);
 
 connectDb().then(() =>
    app.listen(port, () => {
-      console.log("App is runing at port " + port);
+      console.log("App is runing at port : " + port);
    })
 );
