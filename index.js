@@ -15,6 +15,9 @@ const swaggerUi = require("swagger-ui-express");
 const port = process.env.PORT;
 const app = express();
 
+// "url": "http://localhost:5001/api",
+// "url": "https://vietnam-tourist.vercel.app/",
+
 const swaggerSpec = swaggerJSDoc(swaggerDocument);
 
 app.use(cors(false));

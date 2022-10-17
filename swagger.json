@@ -7,7 +7,7 @@
        },
        "servers": [
           {
-             "url": "http://localhost:5001/api",
+             "url": "https://vietnam-tourist.vercel.app/",
              "description": "Development server"
           }
        ],
@@ -26,3 +26,5 @@
     },
     "apis": ["./router/*.js"]
  }
+
+ 
