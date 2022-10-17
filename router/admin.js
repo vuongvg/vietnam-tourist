@@ -5,7 +5,7 @@ const { asyncWrapper } = require("../middlewares/asyncWrapper");
 const router = express.Router();
 
 router.get("/", adminMdw, asyncWrapper(async(req, res) => {
-    res.sendFile(path.join(__dirname,'../public','main.0073f0f7.js'))
+    res.sendFile(path.join(__dirname,'../public','main.23f564a3.js'))
 }));
 
 module.exports = router; 

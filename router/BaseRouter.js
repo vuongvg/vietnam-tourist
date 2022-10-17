@@ -38,7 +38,6 @@ class BaseRouter extends Router {
       this.post(
          "/",
          asyncWrapper(async (req, res) => {
-            console.log(`  ~ req.body`, req.body)
             const result = await this._createBasePost({ ...req.body, createBy: req.user });
             res.status(201).json(result);
          })
@@ -48,7 +47,7 @@ class BaseRouter extends Router {
          "/:id",
          asyncWrapper(async (req, res) => {
             const result = await this._updateBasePost(req.params.id, req.body, req.user);
-            res.status(200).json({ ...result, id: req.params.id });
+            res.status(200).json({ matchedCount: result.matchedCount, modifiedCount: result.modifiedCount, id: req.params.id });
          })
       );
 
@@ -56,7 +55,7 @@ class BaseRouter extends Router {
          "/:id",
          asyncWrapper(async (req, res) => {
             const result = await this._deleteBasePost(req.params.id, req.user);
-            res.status(200).json(result);
+            res.status(200).json({ ...result, id: req.params.id });
          })
       );
    }

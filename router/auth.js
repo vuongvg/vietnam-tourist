@@ -24,7 +24,9 @@ router.post("/register", asyncWrapper(async (req, res) => {
       const newUser = await AuthCtrl.register(
          req.body.username,
          req.body.email,
-         req.body.password
+
+         req.body.password,
+
       );
 
       res.send(newUser);

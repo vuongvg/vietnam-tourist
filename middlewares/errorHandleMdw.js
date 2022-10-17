@@ -1,23 +1,26 @@
+const { customError } = require("../errors/customError");
+
 exports.errorHandleMdw = (err, req, res, next) => {
    if (err) {
       if (err.name === "ValidationError") {
-         console.log(`  ~ err`, err.errors)
-         Object.keys(err.errors).map((name) => (err.errors[name] = err.errors[name].properties?.message|| err.errors[name].reason?.message));
-         console.log(`  ~ err.errors`, err.errors);
+         Object.keys(err.errors).map((name) => (err.errors[name] = err.errors[name].properties?.message || err.errors[name].reason?.message));
+         console.log(`  ~ err`, err);
          res.status(400).send(err);
          return;
       }
+      if (err.name === "CastError") return res.status(400).send("Invalid Id");
+      if (err.name === "MongoServerError") return res.status(400).send(err.message);
 
       const stack = err.stack
          .split("\n")
          .filter((line) => !line.match(/node_modules/))
          .join("\n");
-      console.log("***", err.status, err.message + "\n", stack);
-      
-      req.error = err;
-      // console.log(`  ~ err`, err)
-      res.status(err.status).send(err);
-      // res.status(err.status).send(err.message);
+      console.log("***ERROR", stack);
+
+      // req.error = err;
+      // console.log(`  ~ err`, err.name);
+      res.status(err.status).send(err.message);
+      return;
    } else {
       next();
    }

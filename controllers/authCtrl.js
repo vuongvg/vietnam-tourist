@@ -39,17 +39,21 @@ const register = async (username, email, password) => {
   } else {
     const { salt, hashedPassword } = encryptPassword(password);
 
-    var userInfor = {
-        username: username,
-        email: email,
-        phone: phone,
-        salt: salt,
-        hash: hashedPassword,
-        role: 0,
-    };
 
-    return (newUser = userModel.create(userInfor));
-  }
+      var userInfor = {
+         username: username,
+         email: email,
+         phone: phone,
+         salt: salt,
+         hash: hashedPassword,
+      }; 
+
+      const result =await userModel.create(userInfor);
+      result.salt = undefined;
+      result.hash = undefined;
+      return result
+   }
+
 };
 
 const login = async (username, password) => {
@@ -78,12 +82,13 @@ const login = async (username, password) => {
          expiresIn: 1000 * 60 * 60 * 24,
       }
    );
-
+   existedUser[0].salt = undefined;
+   existedUser[0].hash = undefined;
    return {
       status: 200,
       data: existedUser,
       token: token,
-   };
+   }; 
 };
 
 module.exports = { register, login };

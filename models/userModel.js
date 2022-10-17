@@ -21,9 +21,11 @@ const userSchema = new mongoose.Schema(
       },
       phone: { 
          type:String,
+
+         // required: [true, "Contact information must be provided"],
+
          maxlength: [11, "The max length of phone number is only 11"],
          minLength: [10, "The min length of phone number is only 10"],
-         unique: true,
       },
       salt: {
          type: String,
@@ -36,6 +38,7 @@ const userSchema = new mongoose.Schema(
       },
       role: {
          type:String,
+         default:undefined
       }
    }, 
    { collection:'users', timestamps: true, versionKey: false }
