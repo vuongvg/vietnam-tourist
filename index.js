@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 // app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-   res.send("Sever is running"); 
+   res.send("Sever is running");
 });
 
 app.use("/api", router);
