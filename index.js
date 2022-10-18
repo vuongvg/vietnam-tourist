@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(`docs`));
+app.use(express.static("public"));
 
 // "url": "http://localhost:5001/api",
 // "url": "https://vietnam-tourist.vercel.app/api",
