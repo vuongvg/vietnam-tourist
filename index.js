@@ -20,7 +20,7 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static("docs"));
 // "url": "http://localhost:5001/api",
@@ -55,7 +55,7 @@ const swaggerSpec = swaggerJSDoc({
 
 });
 
-const options = { customCssUrl: "swagger-ui-custom.css" };
+const options = { customCssUrl: `${__dirname}/docs/swagger-ui-custom.css` };
 
 // app.all("/", function (req, res, next) {
 //    res.header("Access-Control-Allow-Origin", "*");
