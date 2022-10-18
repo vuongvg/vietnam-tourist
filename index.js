@@ -16,6 +16,13 @@ const url = require("url");
 const port = process.env.PORT;
 const app = express();
 
+app.use(cors(false));
+app.use(morgan("dev"));
+app.use(express.json());
+app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.static("public"));
 // "url": "http://localhost:5001/api",
 // "url": "https://vietnam-tourist.vercel.app/",
 const swaggerSpec = swaggerJSDoc({
@@ -47,15 +54,8 @@ const swaggerSpec = swaggerJSDoc({
    "apis": [`${__dirname}/router/*.js`]
 }
 );
-const options = { customCssUrl: '/swagger-ui.css' };
-
-app.use(cors(false));
-app.use(morgan("dev"));
-app.use(express.json());
-app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(express.static("public"));
+// const options = { customCssUrl: `${__dirname}/swagger-ui.css` };
+const options = { customCssUrl: `swagger-ui.css` };
 
 app.get("/", (req, res) => {
    console.log(`  ~ req.headers.host`, req.headers.host);
