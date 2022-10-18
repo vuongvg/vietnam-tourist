@@ -23,5 +23,5 @@
       },
       "security": [{ "bearerAuth": [] }]
    },
-   "apis": ["./router/*.js"]
+   "apis": ["./router/swaggerDoc.js"]
 }

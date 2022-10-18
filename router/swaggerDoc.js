@@ -1,6 +1,6 @@
 
 
- //Auth
+//Auth
 
 /**
  * @swagger
@@ -30,8 +30,7 @@
  *                       example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzFlYWVmMWY5YjAzNjRkOTQ0YTliZWIiLCJpYXQiOjE2NjU5MzE5OTYsImV4cCI6MTc1MjMzMTk5Nn0.jNPTrVr6l-mB4ScAZcpfhbsmHRdRaXaSTYjSh5DCGiM'
  *     tags:
  *       - Auth
-*/
-
+ */
 
 /**
  * @swagger
@@ -47,7 +46,7 @@
  *                 - type: object
  *                   properties:
  *                     email:
- *                       type: string   
+ *                       type: string
  *                       description: The User's email.
  *                       example: 'sale3@email.com'
  *     responses:
@@ -64,9 +63,8 @@
  *                     phone:
  *     tags:
  *       - Auth
-*/
-//////////////////////////////
-// User
+ */
+//////////////////////////////// User
 /**
  * @swagger
  * /user/{id}:
@@ -76,7 +74,7 @@
  *         name: id
  *         required: true
  *         default: 634c20c5f55c4a3f2fa28c1e
- *         description: Numeric ID of the blog to retrieve 
+ *         description: Numeric ID of the blog to retrieve
  *         schema:
  *           type: string
  *     responses:
@@ -97,8 +95,7 @@
  *                       example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzFlYWVmMWY5YjAzNjRkOTQ0YTliZWIiLCJpYXQiOjE2NjU5MzE5OTYsImV4cCI6MTc1MjMzMTk5Nn0.jNPTrVr6l-mB4ScAZcpfhbsmHRdRaXaSTYjSh5DCGiM'
  *     tags:
  *       - User
-*/
-
+ */
 
 /**
  * @swagger
@@ -114,7 +111,7 @@
  *                 - type: object
  *                   properties:
  *                     email:
- *                       type: string   
+ *                       type: string
  *                       description: The User's email.
  *                       example: 'sale3@email.com'
  *     responses:
@@ -131,26 +128,25 @@
  *                     phone:
  *     tags:
  *       - User
-*/
-/////////////////////////
-// Blog
+ */
+/////////////////////////// Blog
 
 /**
  * @swagger
  * /blog:
- *   get:     
+ *   get:
  *     parameters:
  *       - in: query
  *         name: page
  *         schema:
  *           type: integer
- *           default: 
+ *           default:
  *         description: The number of page to return
  *       - in: query
  *         name: limit
  *         schema:
  *           type: integer
- *           default: 
+ *           default:
  *         description: The numbers of items to return
  *     responses:
  *       200:
@@ -163,7 +159,7 @@
  *                 $ref: '#/components/schemas/Blog'
  *     tags:
  *       - Blog
-*/
+ */
 
 /**
  * @swagger
@@ -174,7 +170,7 @@
  *         name: id
  *         required: true
  *         default: 63310ae8c894be068fe83640
- *         description: Numeric ID of the blog to retrieve 
+ *         description: Numeric ID of the blog to retrieve
  *         schema:
  *           type: string
  *     responses:
@@ -186,7 +182,7 @@
  *               $ref: '#/components/schemas/Blog'
  *     tags:
  *       - Blog
-*/
+ */
 
 /**
  * @swagger
@@ -207,7 +203,7 @@
  *                 $ref: '#/components/schemas/Blog'
  *     tags:
  *       - Blog
-*/
+ */
 
 /**
  * @swagger
@@ -218,7 +214,7 @@
  *         name: id
  *         required: true
  *         default: 63310ae8c894be068fe83640
- *         description: Numeric ID of the blog to retrieve 
+ *         description: Numeric ID of the blog to retrieve
  *         schema:
  *           type: string
  *     requestBody:
@@ -236,17 +232,17 @@
  *               type: object
  *               properties:
  *                 modifiedCount:
- *                   type: integer 
+ *                   type: integer
  *                   example: 1
  *                 matchedCount:
- *                   type: integer 
+ *                   type: integer
  *                   example: 1
  *                 _id:
- *                   type: string 
+ *                   type: string
  *                   example: 63310ae8c894be068fe83640
  *     tags:
  *       - Blog
-*/
+ */
 
 /**
  * @swagger
@@ -256,7 +252,7 @@
  *       - in: path
  *         name: id
  *         required: true
- *         description: Numeric ID of the blog to retrieve 
+ *         description: Numeric ID of the blog to retrieve
  *         schema:
  *           type: string
  *     responses:
@@ -268,68 +264,67 @@
  *               type: object
  *               properties:
  *                 acknowledged:
- *                   type: string 
+ *                   type: string
  *                   example: true
  *                 deletedCount:
- *                   type: integer 
+ *                   type: integer
  *                   example: 1
  *                 _id:
- *                   type: string 
+ *                   type: string
  *                   example: 63310ae8c894be068fe83640
  *     tags:
  *       - Blog
-*/
+ */
 
-/////////////////////
-// Hotel
+/////////////////////Hotel
 // {{url}}/api/hotel/?sort={"hotelname":"-1"}&range=["evaluate",4, 5]&filter={"isfamous":"famous"}&search=["hotelname","Sofi"]
 
 /**
  * @swagger
  * /hotel:
- *   get:     
+ *   get:
  *     parameters:
  *       - in: query
  *         name: page
  *         schema:
  *           type: integer
- *           default: 
+ *           default:
  *         description: The number of page to return. *** Example 1
- * 
+ *
  *       - in: query
  *         name: limit
  *         schema:
  *           type: integer
- *           default: 
+ *           default:
  *         description: The numbers of items to return. *** Example 5
  *       - in: query
  *         name: filter
  *         schema:
  *           type: string
- *           default: 
- *         description: Filter items. *** Example {"isfamous":"famous"} 
- * 
+ *           default:
+ *         description: Filter items. *** Example {"isfamous":"famous"}
+ *
  *       - in: query
  *         name: range
  *         schema:
  *           type: string
- *           default: 
+ *           default:
  *         description: Range items. *** Example ["evaluate",4, 5]
- * 
+ *
  *       - in: query
  *         name: sort
  *         schema:
  *           type: string
- *           default: 
- *         description: Sort items. *** Example {"title":"-1"} 
- * 
+ *           default:
+ *         description: Sort items. *** Example {"title":"-1"}
+ *
  *       - in: query
  *         name: search
  *         schema:
  *           type: string
- *           default: 
+ *           default:
  *         description: Search items. *** Example ["title","ha_noi"]
- * 
+ *
  *     responses:
  *       200:
  *         description: A list of hotel.
@@ -341,7 +336,7 @@
  *                 $ref: '#/components/schemas/Hotel'
  *     tags:
  *       - Hotel
-*/
+ */
 
 /**
  * @swagger
@@ -351,8 +346,8 @@
  *       - in: path
  *         name: id
  *         required: true
- *         default: 6348cf90ac78bb337ec483f3
- *         description: Numeric ID of the hotel to retrieve 
+ *         default: 634a8c8c08a59397336fd053
+ *         description: Numeric ID of the hotel to retrieve
  *         schema:
  *           type: string
  *     responses:
@@ -364,7 +359,7 @@
  *               $ref: '#/components/schemas/Hotel'
  *     tags:
  *       - Hotel
-*/
+ */
 
 /**
  * @swagger
@@ -385,7 +380,7 @@
  *                 $ref: '#/components/schemas/Hotel'
  *     tags:
  *       - Hotel
-*/
+ */
 
 /**
  * @swagger
@@ -396,7 +391,7 @@
  *         name: id
  *         required: true
  *         default: 63496ade7ac2c3f33eb84fb5
- *         description: Numeric ID of the hotel to retrieve 
+ *         description: Numeric ID of the hotel to retrieve
  *         schema:
  *           type: string
  *     requestBody:
@@ -414,18 +409,17 @@
  *               type: object
  *               properties:
  *                 modifiedCount:
- *                   type: integer 
+ *                   type: integer
  *                   example: 1
  *                 matchedCount:
- *                   type: integer 
+ *                   type: integer
  *                   example: 1
  *                 _id:
- *                   type: string 
+ *                   type: string
  *                   example: 63496ade7ac2c3f33eb84fb5
  *     tags:
  *       - Hotel
-*/
-
+ */
 
 /**
  * @swagger
@@ -435,7 +429,7 @@
  *       - in: path
  *         name: id
  *         required: true
- *         description: Numeric ID of the hotel to retrieve 
+ *         description: Numeric ID of the hotel to retrieve
  *         schema:
  *           type: string
  *     responses:
@@ -447,37 +441,36 @@
  *               type: object
  *               properties:
  *                 acknowledged:
- *                   type: string 
+ *                   type: string
  *                   example: true
  *                 deletedCount:
- *                   type: integer 
+ *                   type: integer
  *                   example: 1
  *                 _id:
- *                   type: string 
+ *                   type: string
  *                   example: 63310ae8c894be068fe83640
  *     tags:
  *       - Hotel
-*/
+ */
 
-/////////////////////
-// Tour
+///////////////////// Tour
 
 /**
  * @swagger
  * /tour:
- *   get:     
+ *   get:
  *     parameters:
  *       - in: query
  *         name: page
  *         schema:
  *           type: integer
- *           default: 
+ *           default:
  *         description: The number of page to return
  *       - in: query
  *         name: limit
  *         schema:
  *           type: integer
- *           default: 
+ *           default:
  *         description: The numbers of items to return
  *     responses:
  *       200:
@@ -490,7 +483,7 @@
  *                 $ref: '#/components/schemas/Tour'
  *     tags:
  *       - Tour
-*/
+ */
 
 /**
  * @swagger
@@ -501,7 +494,7 @@
  *         name: id
  *         required: true
  *         default: 6347dab32d3bbbfefda65493
- *         description: Numeric ID of the tour to retrieve 
+ *         description: Numeric ID of the tour to retrieve
  *         schema:
  *           type: string
  *     responses:
@@ -513,7 +506,7 @@
  *               $ref: '#/components/schemas/Tour'
  *     tags:
  *       - Tour
-*/
+ */
 
 /**
  * @swagger
@@ -534,7 +527,7 @@
  *                 $ref: '#/components/schemas/Tour'
  *     tags:
  *       - Tour
-*/
+ */
 
 /**
  * @swagger
@@ -545,7 +538,7 @@
  *         name: id
  *         required: true
  *         default: 6347dab32d3bbbfefda65493
- *         description: Numeric ID of the tour to retrieve 
+ *         description: Numeric ID of the tour to retrieve
  *         schema:
  *           type: string
  *     requestBody:
@@ -563,17 +556,17 @@
  *               type: object
  *               properties:
  *                 modifiedCount:
- *                   type: integer 
+ *                   type: integer
  *                   example: 1
  *                 matchedCount:
- *                   type: integer 
+ *                   type: integer
  *                   example: 1
  *                 _id:
- *                   type: string 
+ *                   type: string
  *                   example: 6347dab32d3bbbfefda65493
  *     tags:
  *       - Tour
-*/
+ */
 
 /**
  * @swagger
@@ -583,7 +576,7 @@
  *       - in: path
  *         name: id
  *         required: true
- *         description: Numeric ID of the tour to retrieve 
+ *         description: Numeric ID of the tour to retrieve
  *         schema:
  *           type: string
  *     responses:
@@ -595,37 +588,36 @@
  *               type: object
  *               properties:
  *                 acknowledged:
- *                   type: string 
+ *                   type: string
  *                   example: true
  *                 deletedCount:
- *                   type: integer 
+ *                   type: integer
  *                   example: 1
  *                 _id:
- *                   type: string 
+ *                   type: string
  *                   example: 6347dab32d3bbbfefda65493
  *     tags:
  *       - Tour
-*/
+ */
 
-//////////////////////
-// Location
+////////////////////// Location
 
 /**
  * @swagger
  * /location:
- *   get:     
+ *   get:
  *     parameters:
  *       - in: query
  *         name: page
  *         schema:
  *           type: integer
- *           default: 
+ *           default:
  *         description: The number of page to return
  *       - in: query
  *         name: limit
  *         schema:
  *           type: integer
- *           default: 
+ *           default:
  *         description: The numbers of items to return
  *     responses:
  *       200:
@@ -638,7 +630,7 @@
  *                 $ref: '#/components/schemas/Location'
  *     tags:
  *       - Location
-*/
+ */
 
 /**
  * @swagger
@@ -648,8 +640,8 @@
  *       - in: path
  *         name: id
  *         required: true
- *         default: 6347dab32d3bbbfefda65493
- *         description: Numeric ID of the location to retrieve 
+ *         default: 6347bbfa28b43c92e9b9bcf5
+ *         description: Numeric ID of the location to retrieve
  *         schema:
  *           type: string
  *     responses:
@@ -661,7 +653,7 @@
  *               $ref: '#/components/schemas/Location'
  *     tags:
  *       - Location
-*/
+ */
 
 /**
  * @swagger
@@ -682,7 +674,7 @@
  *                 $ref: '#/components/schemas/Location'
  *     tags:
  *       - Location
-*/
+ */
 
 /**
  * @swagger
@@ -693,7 +685,7 @@
  *         name: id
  *         required: true
  *         default: 6347dab32d3bbbfefda65493
- *         description: Numeric ID of the Location to retrieve 
+ *         description: Numeric ID of the Location to retrieve
  *         schema:
  *           type: string
  *     requestBody:
@@ -711,17 +703,17 @@
  *               type: object
  *               properties:
  *                 modifiedCount:
- *                   type: integer 
+ *                   type: integer
  *                   example: 1
  *                 matchedCount:
- *                   type: integer 
+ *                   type: integer
  *                   example: 1
  *                 _id:
- *                   type: string 
+ *                   type: string
  *                   example: 6347dab32d3bbbfefda65493
  *     tags:
  *       - Location
-*/
+ */
 
 /**
  * @swagger
@@ -731,7 +723,7 @@
  *       - in: path
  *         name: id
  *         required: true
- *         description: Numeric ID of the Location to retrieve 
+ *         description: Numeric ID of the Location to retrieve
  *         schema:
  *           type: string
  *     responses:
@@ -743,38 +735,36 @@
  *               type: object
  *               properties:
  *                 acknowledged:
- *                   type: string 
+ *                   type: string
  *                   example: true
  *                 deletedCount:
- *                   type: integer 
+ *                   type: integer
  *                   example: 1
  *                 _id:
- *                   type: string 
+ *                   type: string
  *                   example: 6347dab32d3bbbfefda65493
  *     tags:
  *       - Location
-*/
+ */
 
-
-///////////////////////
-// Restaurant
+/////////////////////// Restaurant
 
 /**
  * @swagger
  * /restaurant:
- *   get:     
+ *   get:
  *     parameters:
  *       - in: query
  *         name: page
  *         schema:
  *           type: integer
- *           default: 
+ *           default:
  *         description: The number of page to return
  *       - in: query
  *         name: limit
  *         schema:
  *           type: integer
- *           default: 
+ *           default:
  *         description: The numbers of items to return
  *     responses:
  *       200:
@@ -787,7 +777,7 @@
  *                 $ref: '#/components/schemas/Restaurant'
  *     tags:
  *       - Restaurant
-*/
+ */
 
 /**
  * @swagger
@@ -798,7 +788,7 @@
  *         name: id
  *         required: true
  *         default: 631f5ce934dbea6679e3b899
- *         description: Numeric ID of the location to retrieve 
+ *         description: Numeric ID of the location to retrieve
  *         schema:
  *           type: string
  *     responses:
@@ -810,7 +800,7 @@
  *               $ref: '#/components/schemas/Restaurant'
  *     tags:
  *       - Restaurant
-*/
+ */
 
 /**
  * @swagger
@@ -831,7 +821,7 @@
  *                 $ref: '#/components/schemas/Restaurant'
  *     tags:
  *       - Restaurant
-*/
+ */
 
 /**
  * @swagger
@@ -842,7 +832,7 @@
  *         name: id
  *         required: true
  *         default: 631f5ce934dbea6679e3b899
- *         description: Numeric ID of the Restaurant to retrieve 
+ *         description: Numeric ID of the Restaurant to retrieve
  *         schema:
  *           type: string
  *     requestBody:
@@ -860,17 +850,17 @@
  *               type: object
  *               properties:
  *                 modifiedCount:
- *                   type: integer 
+ *                   type: integer
  *                   example: 1
  *                 matchedCount:
- *                   type: integer 
+ *                   type: integer
  *                   example: 1
  *                 _id:
- *                   type: string 
+ *                   type: string
  *                   example: 631f5ce934dbea6679e3b899
  *     tags:
  *       - Restaurant
-*/
+ */
 
 /**
  * @swagger
@@ -880,7 +870,7 @@
  *       - in: path
  *         name: id
  *         required: true
- *         description: Numeric ID of the Restaurant to retrieve 
+ *         description: Numeric ID of the Restaurant to retrieve
  *         schema:
  *           type: string
  *     responses:
@@ -892,20 +882,19 @@
  *               type: object
  *               properties:
  *                 acknowledged:
- *                   type: string 
+ *                   type: string
  *                   example: true
  *                 deletedCount:
- *                   type: integer 
+ *                   type: integer
  *                   example: 1
  *                 _id:
- *                   type: string 
+ *                   type: string
  *                   example: 631f5ce934dbea6679e3b899
  *     tags:
  *       - Restaurant
-*/
+ */
 
-//*****************************************************
-// Schema
+//*****************************************************// Schema
 
 // User Schema
 
@@ -954,7 +943,7 @@
  *                   type: string
  *                   description: The avatar's src.
  *                   example: https://media.foody.vn/res/g1/155/prof/s640x400/foody-mobile-sen2-jpg-361-635744536611054640.jpg
- */     
+ */
 
 // Blog Schema
 
@@ -976,7 +965,7 @@
  *         description:
  *           type: string
  *           description: The blog's description.
- *           example: Đi du lịch thì ai cũng thích, nhưng cần phải biết một số nguyên tắc để chuyến du lịch thêm phần hoàn hảo. 
+ *           example: Đi du lịch thì ai cũng thích, nhưng cần phải biết một số nguyên tắc để chuyến du lịch thêm phần hoàn hảo.
  *         like:
  *           type: integer
  *           description: The blog's like.
@@ -1019,7 +1008,7 @@
  *         description:
  *           type: string
  *           description: The hotel's description.
- *           example: InterContinental Hanoi Westlake is an iconic hotel in the heart of the vibrant district of Tay Ho, offering travelers luxurious guest rooms and bespoke Club InterContinental service. Experience multi-award-winning dining at Saigon restaurant or capture a magnificent sunset at Hanoi's only overwater bar, Sunset Bar. The hotel is minutes away from the city’s most alluring attractions, while at the same time offering a peaceful escape in a beautiful and iconic lakeside setting. 
+ *           example: InterContinental Hanoi Westlake is an iconic hotel in the heart of the vibrant district of Tay Ho, offering travelers luxurious guest rooms and bespoke Club InterContinental service. Experience multi-award-winning dining at Saigon restaurant or capture a magnificent sunset at Hanoi's only overwater bar, Sunset Bar. The hotel is minutes away from the city’s most alluring attractions, while at the same time offering a peaceful escape in a beautiful and iconic lakeside setting.
  *         email:
  *           type: string
  *           description: The hotel's email.
@@ -1050,7 +1039,7 @@
  *             _id:
  *               type: string
  *               description: The hotel ID.
- *               example: 6348cf90ac78bb337ec483f3
+ *               example: 634a8c8c08a59397336fd053
  *         - $ref: '#/components/schemas/NewHotel'
  */
 
@@ -1086,11 +1075,11 @@
  *         discount:
  *           type: integer
  *           description: The tour's discount.
- *           example: 
+ *           example:
  *         depart:
  *           type: integer
  *           description: The tour's depart.
- *           example: 
+ *           example:
  *         province:
  *           type: string
  *           description: The tour's province.
@@ -1140,7 +1129,7 @@
  *           example: The karst seascape of Halong Bay is one of the best places to visit in the world for spellbinding sea views and is a UNESCO World Heritage Site.
  *         avatar:
  *           type: object
- *           properties: 
+ *           properties:
  *             src:
  *               type: string
  *               description: The avatar's src.
@@ -1195,7 +1184,7 @@
  *           example: https://goo.gl/maps/QAtrWC6JUGhpbPRe9
  *         avatar:
  *           type: object
- *           properties: 
+ *           properties:
  *             src:
  *               type: string
  *               description: The avatar's src.
@@ -1210,4 +1199,3 @@
  *               example: 631f5ce934dbea6679e3b899
  *         - $ref: '#/components/schemas/NewRestaurant'
  */
-

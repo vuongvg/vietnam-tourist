@@ -24,8 +24,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
 
-// "url": "http://localhost:5001/api",
-// "url": "https://vietnam-tourist.vercel.app/api",
 const swaggerSpec = swaggerJSDoc({
    swaggerDefinition: {
       openapi: "3.0.0",
@@ -35,7 +33,8 @@ const swaggerSpec = swaggerJSDoc({
       },
       servers: [
          {
-            url: "https://vietnam-tourist.vercel.app/api",
+            url: "http://localhost:5001/api",
+            // url: "https://vietnam-tourist.vercel.app/api",
             description: "Development server",
          },
       ],
@@ -63,7 +62,7 @@ const options = { customCssUrl: `swagger-ui-custom.css` };
 //    res.header("Content-type", "application/json");
 //    next();
 // });
-
+   
 app.get("/", (req, res) => {
    res.send("Sever is running");
 });
@@ -72,7 +71,8 @@ app.use("/api", router);
 app.get("/docs/swagger-ui-custom.css", (req, res) => {
    res.sendFile(`${__dirname}/public/swagger-ui-custom.css`);
 });
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, options));
+// app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, options));
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerJSDoc(swaggerDocument), options));
 
 app.use(notFoundMdw);
 app.use(errorHandleMdw);
