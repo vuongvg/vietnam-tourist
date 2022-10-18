@@ -8,6 +8,10 @@
       "servers": [
          {
             "url": "https://vietnam-tourist.vercel.app/api",
+            "description": "Product server"
+         },
+         {
+            "url": "http://localhost:5001/api",
             "description": "Development server"
          }
       ],
