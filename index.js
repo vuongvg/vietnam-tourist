@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/docs',express.static(`${__dirname}/docs`));
+app.use(express.static(`${__dirname}/docs`));
 // "url": "http://localhost:5001/api",
 // "url": "https://vietnam-tourist.vercel.app/api",
 const swaggerSpec = swaggerJSDoc({
