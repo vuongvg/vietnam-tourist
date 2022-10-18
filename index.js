@@ -52,14 +52,10 @@ const swaggerSpec = swaggerJSDoc({
       security: [{ bearerAuth: [] }],
    },
    "apis": [`${__dirname}/router/swaggerDoc.js`]
-   // "apis": [`${__dirname}/router/*.js`]
-   // apis: [path.join(__dirname, "./router", "*.js")],
+
 });
-// const options = { customCssUrl: `${__dirname}/swagger-ui-custom.css` };
-// console.log(`  ~ __dirname`, __dirname/swagger-ui-custom.css)
-// console.log(`  ~ __dirname`, path.join(__dirname, "./docs", "swagger-ui-custom.css"));
+
 const options = { customCssUrl: "swagger-ui-custom.css" };
-// const options = { customCssUrl: path.join(__dirname, "./docs", "swagger-ui-custom.css") };
 
 // app.all("/", function (req, res, next) {
 //    res.header("Access-Control-Allow-Origin", "*");
@@ -73,11 +69,7 @@ app.get("/", (req, res) => {
 }); 
 
 app.use("/api", router);
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-// app.get("/docs/", (req, res) => {
-//    res.sendFile(path.join(__dirname, "./docs", "docs.html"));
-//    res.sendFile(path.join(__dirname, "./docs", "swagger-ui-custom.css"));
-// });
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec,options));
 
 app.use(notFoundMdw);
 app.use(errorHandleMdw);
