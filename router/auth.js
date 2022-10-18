@@ -3,39 +3,20 @@ const router = express.Router();
 const AuthCtrl = require("../controllers/authCtrl");
 const { asyncWrapper } = require("../middlewares/asyncWrapper");
 
-router.post("/login", asyncWrapper(async (req, res) => {
-   try {
-      const loginStatus = await AuthCtrl.login(
-         req.body.username,
-         req.body.password
-      );
+router.post(
+   "/login",
+   asyncWrapper(async (req, res) => {
+      const login = await AuthCtrl.login(req.body.username, req.body.password);
+      res.status(200).json(login);
+   })
+);
 
-      res.send(loginStatus);
-   } catch(err) {
-      res.send({
-         status:400,
-         message:"Login failed"
-      });
-   }
-}));
-
-router.post("/register", asyncWrapper(async (req, res) => {
-   try {
-      const newUser = await AuthCtrl.register(
-         req.body.username,
-         req.body.email,
-
-         req.body.password,
-
-      );
-
-      res.send(newUser);
-   } catch (err) {
-      res.send({
-         status:400,
-         message:"Inserting failed"
-      });
-   }
-}));
+router.post(
+   "/register",
+   asyncWrapper(async (req, res) => {
+      const newUser = await AuthCtrl.register(req.body.username, req.body.email, req.body.password);
+      res.status(201).json(newUser);
+   })
+);
 
 module.exports = router;

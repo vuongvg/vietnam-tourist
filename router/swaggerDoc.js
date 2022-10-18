@@ -13,7 +13,7 @@
  *             schema:
  *               $ref: '#/components/schemas/NewUser'
  *     responses:
- *       201:
+ *       200:
  *         description: Login User.
  *         content:
  *           application/json:

@@ -11,7 +11,6 @@ const path = require("path");
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
-const url = require("url");
 
 const port = process.env.PORT;
 const app = express();
@@ -34,8 +33,11 @@ const swaggerSpec = swaggerJSDoc({
       servers: [
          {
             url: "http://localhost:5001/api",
-            // url: "https://vietnam-tourist.vercel.app/api",
             description: "Development server",
+         },
+         {
+            url: "https://vietnam-tourist.vercel.app/api",
+            description: "Product server",
          },
       ],
       components: {
