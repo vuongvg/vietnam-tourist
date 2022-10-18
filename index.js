@@ -54,7 +54,9 @@ const swaggerSpec = swaggerJSDoc({
    "apis": [`${__dirname}/router/*.js`]
 }
 );
+console.log(`${__dirname}/router/*.js`, )
 // const options = { customCssUrl: `${__dirname}/swagger-ui.css` };
+console.log(`  ~ __dirname`, __dirname)
 const options = { customCssUrl: `swagger-ui.css` };
 
 app.get("/", (req, res) => {
@@ -63,7 +65,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api", router);
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec,options));
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec,options));   
 
 app.use(notFoundMdw);
 app.use(errorHandleMdw);
