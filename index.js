@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use(express.static(`${__dirname}/docs`));
+app.use(express.static(`docs`));
 
 // "url": "http://localhost:5001/api",
 // "url": "https://vietnam-tourist.vercel.app/api",
@@ -52,11 +52,10 @@ const swaggerSpec = swaggerJSDoc({
       },
       security: [{ bearerAuth: [] }],
    },
-   "apis": [`${__dirname}/router/swaggerDoc.js`]
-
+   apis: [`${__dirname}/router/swaggerDoc.js`],
 });
 
-const options = { customCssUrl: `${__dirname}/docs/swagger-ui-custom.css` };
+const options = { customCssUrl: `swagger-ui-custom.css` };
 
 // app.all("/", function (req, res, next) {
 //    res.header("Access-Control-Allow-Origin", "*");
@@ -66,18 +65,18 @@ const options = { customCssUrl: `${__dirname}/docs/swagger-ui-custom.css` };
 // });
 
 app.get("/", (req, res) => {
-   // res.send("Sever is running");
+   res.send("Sever is running");
    // res.sendFile(path.join(__dirname,'../public','main.23f564a3.js'))
-   res.sendFile(`${__dirname}/docs/swagger-ui-custom.css`)
-}); 
+   // res.sendFile(`${__dirname}/docs/swagger-ui-custom.css`)
+});
 app.get("/var/task/docs/swagger-ui-custom.css", (req, res) => {
    // res.send("Sever is running");
    // res.sendFile(path.join(__dirname,'../public','main.23f564a3.js'))
-   res.sendFile(`${__dirname}/docs/swagger-ui-custom.css`)
-}); 
+   res.sendFile(`${__dirname}/docs/swagger-ui-custom.css`);
+});
 
 app.use("/api", router);
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec,options));
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, options));
 
 app.use(notFoundMdw);
 app.use(errorHandleMdw);
