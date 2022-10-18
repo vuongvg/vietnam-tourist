@@ -22,7 +22,8 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(`${__dirname}/docs`));
+// app.use(express.static(`${__dirname}/docs`));
+
 // "url": "http://localhost:5001/api",
 // "url": "https://vietnam-tourist.vercel.app/api",
 const swaggerSpec = swaggerJSDoc({
@@ -65,7 +66,9 @@ const options = { customCssUrl: `${__dirname}/docs/swagger-ui-custom.css` };
 // });
 
 app.get("/", (req, res) => {
-   res.send("Sever is running");
+   // res.send("Sever is running");
+   // res.sendFile(path.join(__dirname,'../public','main.23f564a3.js'))
+   res.sendFile(`${__dirname}/docs/swagger-ui-custom.css`)
 }); 
 
 app.use("/api", router);
