@@ -13,8 +13,6 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
 const url = require("url");
 
-console.log(`  ~ process.cwd()`, process.cwd())
-
 const port = process.env.PORT;
 const app = express();
 
@@ -53,8 +51,9 @@ const swaggerSpec = swaggerJSDoc({
       },
       security: [{ bearerAuth: [] }],
    },
+   "apis": [`./router/swaggerDoc.js`]
    // "apis": [`${__dirname}/router/*.js`]
-   apis: [path.join(__dirname, "./router", "*.js")],
+   // apis: [path.join(__dirname, "./router", "*.js")],
 });
 // const options = { customCssUrl: `${__dirname}/swagger-ui-custom.css` };
 // console.log(`  ~ __dirname`, __dirname/swagger-ui-custom.css)
@@ -63,7 +62,7 @@ const options = { customCssUrl: "swagger-ui-custom.css" };
 // const options = { customCssUrl: path.join(__dirname, "./docs", "swagger-ui-custom.css") };
 
 // app.all("/", function (req, res, next) {
-//    res.header("Access-Control-Allow-Origin", "*");  
+//    res.header("Access-Control-Allow-Origin", "*");
 //    res.header("Access-Control-Allow-Headers", "X-Requested-With");
 //    res.header("Content-type", "application/json");
 //    next();
@@ -71,10 +70,14 @@ const options = { customCssUrl: "swagger-ui-custom.css" };
 
 app.get("/", (req, res) => {
    res.send("Sever is running");
-});
+}); 
 
 app.use("/api", router);
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, options));
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// app.get("/docs/", (req, res) => {
+//    res.sendFile(path.join(__dirname, "./docs", "docs.html"));
+//    res.sendFile(path.join(__dirname, "./docs", "swagger-ui-custom.css"));
+// });
 
 app.use(notFoundMdw);
 app.use(errorHandleMdw);
