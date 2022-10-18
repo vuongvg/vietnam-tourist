@@ -51,7 +51,7 @@ const swaggerSpec = swaggerJSDoc({
       },
       security: [{ bearerAuth: [] }],
    },
-   "apis": [`./router/swaggerDoc.js`]
+   "apis": [`${__dirname}/router/swaggerDoc.js`]
    // "apis": [`${__dirname}/router/*.js`]
    // apis: [path.join(__dirname, "./router", "*.js")],
 });
