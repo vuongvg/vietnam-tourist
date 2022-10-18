@@ -70,6 +70,11 @@ app.get("/", (req, res) => {
    // res.sendFile(path.join(__dirname,'../public','main.23f564a3.js'))
    res.sendFile(`${__dirname}/docs/swagger-ui-custom.css`)
 }); 
+app.get("/var/task/docs/swagger-ui-custom.css", (req, res) => {
+   // res.send("Sever is running");
+   // res.sendFile(path.join(__dirname,'../public','main.23f564a3.js'))
+   res.sendFile(`${__dirname}/docs/swagger-ui-custom.css`)
+}); 
 
 app.use("/api", router);
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec,options));
