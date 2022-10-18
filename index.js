@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use(express.static("public"));
+app.use(express.static("public"));
 
 // "url": "http://localhost:5001/api",
 // "url": "https://vietnam-tourist.vercel.app/api",
@@ -66,16 +66,12 @@ const options = { customCssUrl: `swagger-ui-custom.css` };
 
 app.get("/", (req, res) => {
    res.send("Sever is running");
-   // res.sendFile(path.join(__dirname,'../public','main.23f564a3.js'))
-   // res.sendFile(`${__dirname}/docs/swagger-ui-custom.css`)
-});
-app.get("/docs/:file", (req, res) => {
-   // res.send("Sever is running");
-   // res.sendFile(path.join(__dirname,'../public','main.23f564a3.js'))
-   res.sendFile(`${__dirname}/public/swagger-ui-custom.css`);
 });
 
 app.use("/api", router);
+app.get("/docs/swagger-ui-custom.css", (req, res) => {
+   res.sendFile(`${__dirname}/public/swagger-ui-custom.css`);
+});
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, options));
 
 app.use(notFoundMdw);
