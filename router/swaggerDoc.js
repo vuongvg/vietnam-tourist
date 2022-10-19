@@ -101,6 +101,14 @@
  * @swagger
  * /user/{id}:
  *   patch:
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         default: 634c20c5f55c4a3f2fa28c1e
+ *         description: Numeric ID of the blog to retrieve
+ *         schema:
+ *           type: string
  *     requestBody:
  *       required: true
  *       content:
@@ -110,10 +118,21 @@
  *                 - $ref: '#/components/schemas/NewUser'
  *                 - type: object
  *                   properties:
+ *                     username:
  *                     email:
  *                       type: string
  *                       description: The User's email.
  *                       example: 'sale3@email.com'
+ *                     phone:
+ *                       type: string
+ *                       description: The User's phone.
+ *                       example: '0987654321'
+ *                     avatar:
+ *                       type: object
+ *                       properties: 
+ *                         src: 
+ *                           type: string
+ *                           example: 'https://image.thanhnien.vn/w1024/Uploaded/2022/tnabtw/2021_12_09/ta03-7305.jpg'
  *     responses:
  *       201:
  *         description: Create User.
@@ -129,6 +148,7 @@
  *     tags:
  *       - User
  */
+
 /////////////////////////// Blog
 
 /**

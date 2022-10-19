@@ -1,4 +1,4 @@
-const userModel = require("../models/userModel");
+const User = require("../models/userModel");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const { customError } = require("../errors/customError");
@@ -15,37 +15,37 @@ const verifyPassword = (password, userInfor) => {
 };
 
 const register = async (username, email, password) => {
-   const existedUser = await userModel.findUserByName(username);
-   const registeredEmail = await userModel.findUserByEmail(email);
+   const existedUser = await User.findOne({ username }).lean();
+   const registeredEmail = await User.findOne({ email }).lean();
 
-   if (existedUser.length) throw customError(400, "Username has been registered");
-   if (registeredEmail.length) throw customError(400, "Email has been registered");
+   if (existedUser) throw customError(400, "Username has been registered");
+   if (registeredEmail) throw customError(400, "Email has been registered");
    if (!password || password.length < 6) throw customError(400, "The min length of password is only 6");
 
    const { salt, hashedPassword } = encryptPassword(password);
-   const result = await userModel.create({ username, email, salt, hashedPassword });
+   const result = await User.create({ username, email, salt, hash:hashedPassword });
    result.salt = undefined;
    result.hash = undefined;
    return result;
 };
 
 const login = async (username, password) => {
-   const existedUser = await userModel.findUserByName(username).lean();
-   if (!existedUser.length) throw customError(400, "Username or Password is incorrect");
-   if (!verifyPassword(password, existedUser[0])) throw customError(400, "Username or Password is incorrect");
+   const existedUser = await User.findOne({ username }).lean();
+   if (!existedUser) throw customError(400, "Username or Password is incorrect");
+   if (!verifyPassword(password, existedUser)) throw customError(400, "Username or Password is incorrect.");
 
    const token = jwt.sign(
       {
-         userId: existedUser[0]._id.toString(),
+         userId: existedUser._id.toString(),
       },
       process.env.MY_PRIVATE_KEY,
       {
          expiresIn: 1000 * 60 * 60 * 24,
       }
    );
-   existedUser[0].salt = undefined;
-   existedUser[0].hash = undefined;
-   return { ... existedUser[0], token };
+   existedUser.salt = undefined;
+   existedUser.hash = undefined;
+   return { ...existedUser, token };
 };
 
 module.exports = { register, login };
