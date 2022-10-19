@@ -1,12 +1,14 @@
-const userModel = require("../models/userModel");
+const User = require("../models/userModel");
 
 const getUserInforById = async (userId) => {
-   const result = await await userModel.findUserById(userId);
+   const result = await await User.findOne({_id:userId});
+   result.salt = undefined;
+   result.hash = undefined;
    return result;
-}
+} 
 
 const updateUser = async (userId,updateInfor) => {
-   const result = await userModel.updateUserInfor(userId, updateInfor);
+   const result = await User.updateUserInfor(userId, updateInfor);
    return result;
 }
 

@@ -4,7 +4,10 @@ const { asyncWrapper } = require("../middlewares/asyncWrapper");
 const { authMdw } = require("../middlewares/authMdw");
 const router = express.Router();
 
-router.get("/:id",(req, res, next) => authMdw,asyncWrapper(async (req, res) => {
+router.get(
+   "/:id",
+   authMdw,
+   asyncWrapper(async (req, res) => {
       const userInfor = await userCtrl.getUserInforById(req.params.id);
       res.status(200).json(userInfor);
       // try {
@@ -16,7 +19,10 @@ router.get("/:id",(req, res, next) => authMdw,asyncWrapper(async (req, res) => {
    })
 );
 
-router.patch("/update/:id", authMdw, asyncWrapper(async (req, res) => {
+router.patch(
+   "/update/:id",
+   authMdw,
+   asyncWrapper(async (req, res) => {
       const updatedUser = await userCtrl.updateUser(req.params.id, req.body);
       res.status(200).json(updatedUser);
       // try {
