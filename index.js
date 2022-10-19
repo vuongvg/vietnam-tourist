@@ -15,7 +15,7 @@ const swaggerDocument = require("./swagger.json");
 const port = process.env.PORT;
 const app = express();
 
-app.use(cors());
+app.use(cors(false));
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(bodyParser.json());
