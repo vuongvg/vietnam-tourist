@@ -22,7 +22,7 @@ app.use(express.static("public"));
 const options = { customCssUrl: `swagger-ui-custom.css` };
 
 app.get("/", (req, res) => {
-   res.send("Sever is running");
+   res.send("Sever is running "+process.env.MONGODB_URI);
 });
 app.use("/api", router);
 app.get("/docs/swagger-ui-custom.css", (req, res) => {
