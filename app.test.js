@@ -1,4 +1,3 @@
-require("dotenv").config();
 const { default: mongoose } = require("mongoose");
 const request = require("supertest");
 const { app } = require("./app");
@@ -175,7 +174,7 @@ const listTestAPI = [
 
 describe("------ API------", () => {
    beforeAll(() => {
-      connectDb(process.env.MONGODB_URI);
+      connectDb();
    });
 
    afterAll((done) => {
