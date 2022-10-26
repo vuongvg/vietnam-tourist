@@ -1,4 +1,4 @@
-require("dotenv").config();
+// require("dotenv").config();
 const { default: mongoose } = require("mongoose");
 
 

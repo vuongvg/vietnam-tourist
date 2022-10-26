@@ -6,6 +6,6 @@ const port = process.env.PORT;
 
 app.listen(port, () => {
    connectDb().then(() => {
-      console.log("App is runing at port : " + port);
+      console.log("App is runing at port : " + port); 
    }); 
 });
