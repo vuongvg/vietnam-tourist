@@ -100,7 +100,7 @@
 /**
  * @swagger
  * /user/{id}:
- *   patch:
+ *   put:
  *     parameters:
  *       - in: path
  *         name: id
@@ -128,11 +128,8 @@
  *                       description: The User's phone.
  *                       example: '0987654321'
  *                     avatar:
- *                       type: object
- *                       properties: 
- *                         src: 
- *                           type: string
- *                           example: 'https://image.thanhnien.vn/w1024/Uploaded/2022/tnabtw/2021_12_09/ta03-7305.jpg'
+ *                       type: string
+ *                       example: 'https://image.thanhnien.vn/w1024/Uploaded/2022/tnabtw/2021_12_09/ta03-7305.jpg'
  *     responses:
  *       201:
  *         description: Create User.

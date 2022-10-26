@@ -15,6 +15,7 @@ class BaseRouter extends Router {
          asyncWrapper(async (req, res) => {
             const { page = 1, limit = 10 } = req.query;
             const result = await this._findAllBasePost(req.query, page, limit);
+            
             res.header("Access-Control-Allow-Origin", "*");
             res.setHeader("Access-Control-Expose-Headers", "X-Total-Count,Content-Range,X-Count,X-Total-Page");
             res.setHeader("X-Total-Count", result.total);
