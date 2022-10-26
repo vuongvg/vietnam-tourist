@@ -1,7 +1,8 @@
 // require("dotenv").config();
 // const { app } = require("./app");
 const { connectDb } = require("./db/connectDb");
-
+// "test": "jest --watchAll",
+// "test": "echo \"Error: no test specified\" && exit 1",
 const port = process.env.PORT;
 const uri = process.env.MONGODB_URI;
 const express = require("express");
