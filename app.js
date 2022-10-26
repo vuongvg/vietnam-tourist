@@ -2,16 +2,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
-const { connectDb } = require("./db/connectDb");
 const { errorHandleMdw } = require("./middlewares/errorHandleMdw");
 const { notFoundMdw } = require("./middlewares/notFound");
 const router = require("./router");
-const path = require("path");
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
 
-const port = process.env.PORT;
 const app = express();
 
 app.use(cors(false));
