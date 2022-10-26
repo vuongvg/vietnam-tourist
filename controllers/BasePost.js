@@ -2,9 +2,9 @@ const { customError } = require("../errors/customError");
 class BasePost {
    constructor(model) {
       this._model = model;
+
       this.findSingleBasePost = async (_id) => {
          const result = await this._model.findOne({ _id }).lean();
-         console.log(`  ~ result`, result)
          return result;
       };
 

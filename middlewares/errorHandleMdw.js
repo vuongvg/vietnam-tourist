@@ -7,7 +7,7 @@ exports.errorHandleMdw = (err, req, res, next) => {
          res.status(400).send(err);
          return;
       }
-      if (err.name === "CastError") return res.status(400).send("Invalid Id");
+      if (err.name === "CastError") return res.status(404).send("Invalid Id");
       if (err.name === "ReferenceError") return res.status(400).send(err.message);
       if (err.name === "MongoServerError") return res.status(400).send(err.message);
 

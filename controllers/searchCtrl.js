@@ -30,7 +30,7 @@ const searchAllPostByKeyword = async (keyword, page, limit, sort) => {
    ]);
    return {
       data: result[0].data,
-      total: result[0].count[0].count,
+      total: result[0].count[0]?.count || 0,
    };
 };
 
