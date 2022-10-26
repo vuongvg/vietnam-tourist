@@ -1,4 +1,4 @@
-// require("dotenv").config();
+require("dotenv").config();
 // const { app } = require("./app");
 const { connectDb } = require("./db/connectDb");
 // "test": "jest --watchAll",
@@ -40,8 +40,10 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerJSDoc(swaggerDocument),
 app.use(notFoundMdw);
 app.use(errorHandleMdw);
 
+connectDb()
 app.listen(port, () => {
-   connectDb(uri).then(() => {
-      console.log("App is runing at port : " + port);
-   });
+   console.log("App is runing at port : " + port);
+   // connectDb(uri).then(() => {
+   //    console.log("App is runing at port : " + port);
+   // });
 });
