@@ -15,6 +15,8 @@ const newUser = {
    password: `${idTest}`,
 };
 
+const keywordSearch = "buffet";
+
 const newHotel = {
    title: "Intercontinental Hanoi Westlake, An IHG Hotel",
    description: "InterContinental Hanoi Westlake",
@@ -180,6 +182,29 @@ describe("------ API------", () => {
    afterAll((done) => {
       mongoose.disconnect(done);
    });
+
+   describe(`\n------ Search API ------`, () => {
+      it(`GET /search  --> search all posts`, () => {
+         return request(app)
+            .get(`/api/search?keyword=${keywordSearch}`)
+            .expect("Content-Type", /json/)
+            .expect(200)
+            .then((res) => {
+               expect(res.body).toEqual(expect.arrayContaining([expect.objectContaining(locationItem)]));
+               expect(res.body.every((item) => JSON.stringify(item).match(new RegExp(keywordSearch, "i")))).toBe(true);
+            });
+      });
+      it(`GET /search  --> search not found`, () => {
+         return request(app)
+            .get(`/api/search?keyword=gbdfgdfg`)
+            .expect("Content-Type", /json/)
+            .expect(200) 
+            .then((res) => expect(res.body).toEqual([]));
+      });
+   });
+
+   // return;
+
    describe(`\n------ Auth API ------`, () => {
       it(`POST /auth/register  --> created user`, () => {
          return request(app)
@@ -204,6 +229,7 @@ describe("------ API------", () => {
             });
       });
    });
+
    describe(`\n------ User API ------`, () => {
       it(`GET /user/id  --> get user by id`, () => {
          return request(app)
@@ -248,18 +274,6 @@ describe("------ API------", () => {
             .expect(200)
             .then((res) => {
                expect(res.body).toEqual(expect.objectContaining({ ...user, role: expect.any(String) }));
-            });
-      });
-   });
-
-   describe(`\n------ Search API ------`, () => {
-      it(`GET /search  --> search all posts`, () => {
-         return request(app)
-            .get(`/api/search?keyword=Buffet`)
-            .expect("Content-Type", /json/)
-            .expect(200)
-            .then((res) => {
-               expect(res.body).toEqual(expect.arrayContaining([expect.objectContaining(locationItem)])); 
             });
       });
    });

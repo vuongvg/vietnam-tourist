@@ -15,13 +15,13 @@ exports.errorHandleMdw = (err, req, res, next) => {
          .split("\n")
          .filter((line) => !line.match(/node_modules/))
          .join("\n");
-      console.log("***ERROR", stack);
+      // console.log("***ERROR", stack);
 
       // req.error = err;
       // console.log(`  ~ err`, err.name);
       res.status(err.status).send(err.message);
       return;
    } else {
-      next();
+      next(); 
    }
 };
