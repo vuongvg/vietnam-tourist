@@ -3,8 +3,7 @@ const User = require("../models/userModel");
 
 const getUserInforById = async (userId) => {
    const result = await await User.findOne({ _id: userId });
-   result.salt = undefined;
-   result.hash = undefined;
+   if (result) delete result.salt, result.hash;
    return result;
 };
 
@@ -22,9 +21,10 @@ const getListUser = async (page, limit) => {
    ]);
 };
 
+// for jest test
 const deleteUser = async (user) => {
-   if( user.username.slice(0,4)!=='test') throw customError(405,"Method Not Allowed");
-   const result = await User.findOneAndDelete({ _id:user._id }).lean();
+   if (user.username.slice(0, 4) !== "test") throw customError(405, "Method Not Allowed");
+   const result = await User.findOneAndDelete({ _id: user._id }).lean();
    return result;
 };
 

@@ -1,5 +1,5 @@
 const express = require("express");
-const userCtrl = require("../controllers/userCtrl");
+const { getUserInforById, getListUser, updateUser, deleteUser } = require("../controllers/userCtrl");
 const adminMdw = require("../middlewares/adminMdw");
 const { asyncWrapper } = require("../middlewares/asyncWrapper");
 const { authMdw } = require("../middlewares/authMdw");
@@ -9,7 +9,7 @@ router.get(
    "/:id",
    authMdw,
    asyncWrapper(async (req, res) => {
-      const userInfor = await userCtrl.getUserInforById(req.params.id);
+      const userInfor = await getUserInforById(req.params.id);
       res.status(200).json(userInfor);
    })
 );
@@ -19,7 +19,7 @@ router.get(
    adminMdw,
    asyncWrapper(async (req, res) => {
       const { page = 1, limit = 10 } = req.query;
-      const [data, total] = await userCtrl.getListUser(page, limit);
+      const [data, total] = await getListUser(page, limit);
 
       res.header("Access-Control-Allow-Origin", "*");
       res.setHeader("Access-Control-Expose-Headers", "X-Total-Count,Content-Range,X-Count,X-Total-Page");
@@ -31,21 +31,22 @@ router.get(
    })
 );
 
-router.put(
+router.patch(
    "/:id",
    authMdw,
    asyncWrapper(async (req, res) => {
-      const updatedUser = await userCtrl.updateUser(req.params.id, req.body);
+      const updatedUser = await updateUser(req.params.id, req.body);
       res.status(200).json(updatedUser);
    })
 );
 
+// for jest test 
 router.delete(
    "/",
    authMdw,
    asyncWrapper(async (req, res) => {
-      const deletedUser = await userCtrl.deleteUser(req.user);
-      res.status(200).json({...deletedUser,salt:undefined,hash:undefined})
+      const deletedUser = await deleteUser(req.user);
+      res.status(200).json({ ...deletedUser, salt: undefined, hash: undefined });
    })
 );
 

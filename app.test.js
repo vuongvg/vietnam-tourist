@@ -15,6 +15,8 @@ const newUser = {
    password: `${idTest}`,
 };
 
+const keywordSearch = "buffet";
+
 const newHotel = {
    title: "Intercontinental Hanoi Westlake, An IHG Hotel",
    description: "InterContinental Hanoi Westlake",
@@ -70,7 +72,7 @@ const newRestaurant = {
       },
    ],
    description: " SEN l Buffet Viet Nam",
-   isfamous: "famous",
+   famous: true,
 };
 
 const newTour = {
@@ -100,7 +102,7 @@ const hotelItem = {
    title: expect.any(String),
    description: expect.any(String),
    createBy: expect.objectContaining({ _id: expect.any(String), username: expect.any(String) }),
-   isfamous: expect.any(String),
+   famous: expect.any(String),
    avatar: expect.objectContaining({ src: expect.any(String) }),
    typePost: expect.any(String),
    album: expect.any(Array),
@@ -144,7 +146,7 @@ const restaurantItem = {
    gmaplink: expect.any(String),
    album: expect.any(Array),
    createBy: expect.objectContaining({ _id: expect.any(String), username: expect.any(String) }),
-   // isfamous: expect.any(String),
+   // famous: expect.any(String),
    // typePost: expect.any(String),
 };
 
@@ -160,7 +162,7 @@ const tourItem = {
    price: expect.any(Number),
    regularPrice: expect.any(Number),
    transfer: expect.any(String),
-   // isfamous: expect.any(String),
+   // famous: expect.any(String),
    // typePost: expect.any(String),
 };
 
@@ -180,6 +182,29 @@ describe("------ API------", () => {
    afterAll((done) => {
       mongoose.disconnect(done);
    });
+
+   describe(`\n------ Search API ------`, () => {
+      it(`GET /search  --> search all posts`, () => {
+         return request(app)
+            .get(`/api/search?keyword=${keywordSearch}`)
+            .expect("Content-Type", /json/)
+            .expect(200)
+            .then((res) => {
+               expect(res.body).toEqual(expect.arrayContaining([expect.objectContaining(locationItem)]));
+               expect(res.body.every((item) => JSON.stringify(item).match(new RegExp(keywordSearch, "i")))).toBe(true);
+            });
+      });
+      it(`GET /search  --> search not found`, () => {
+         return request(app)
+            .get(`/api/search?keyword=gbdfgdfg`)
+            .expect("Content-Type", /json/)
+            .expect(200) 
+            .then((res) => expect(res.body).toEqual([]));
+      });
+   });
+
+   // return;
+
    describe(`\n------ Auth API ------`, () => {
       it(`POST /auth/register  --> created user`, () => {
          return request(app)
@@ -204,6 +229,7 @@ describe("------ API------", () => {
             });
       });
    });
+
    describe(`\n------ User API ------`, () => {
       it(`GET /user/id  --> get user by id`, () => {
          return request(app)
@@ -227,9 +253,9 @@ describe("------ API------", () => {
             });
       });
 
-      it(`PUT /user  --> update user`, () => {
+      it(`PATCH /user  --> update user`, () => {
          return request(app)
-            .put(`/api/user/${newUser._id}`)
+            .patch(`/api/user/${newUser._id}`)
             .set("Authorization", "Bearer " + newUser.token)
             .send(newUser)
             .expect("Content-Type", /json/)
@@ -248,18 +274,6 @@ describe("------ API------", () => {
             .expect(200)
             .then((res) => {
                expect(res.body).toEqual(expect.objectContaining({ ...user, role: expect.any(String) }));
-            });
-      });
-   });
-
-   describe(`\n------ Search API ------`, () => {
-      it(`GET /search  --> search all posts`, () => {
-         return request(app)
-            .get(`/api/search?keyword=Buffet`)
-            .expect("Content-Type", /json/)
-            .expect(200)
-            .then((res) => {
-               expect(res.body).toEqual(expect.arrayContaining([expect.objectContaining(locationItem)])); 
             });
       });
    });
@@ -297,9 +311,9 @@ describe("------ API------", () => {
                });
          });
 
-         it(`PUT /${item.name}/id   --> update ${item.name}`, () => {
+         it(`PATCH /${item.name}/id   --> update ${item.name}`, () => {
             return request(app)
-               .put(`/api/${item.name}/${item.idItem}`)
+               .patch(`/api/${item.name}/${item.idItem}`)
                .set("Authorization", "Bearer " + token)
                .send({
                   title: "test update title",
@@ -313,9 +327,9 @@ describe("------ API------", () => {
                });
          });
 
-         it(`PUT /${item.name}/id   --> ReUpdate ${item.name}`, () => {
+         it(`PATCH /${item.name}/id   --> ReUpdate ${item.name}`, () => {
             return request(app)
-               .put(`/api/${item.name}/${item.idItem}`)
+               .patch(`/api/${item.name}/${item.idItem}`)
                .set("Authorization", "Bearer " + token)
                .send({
                   title: item.newDocument.title,
@@ -329,9 +343,9 @@ describe("------ API------", () => {
                });
          });
 
-         it(`PUT /${item.name}/id  -->  404 if not found`, () => {
+         it(`PATCH /${item.name}/id  -->  404 if not found`, () => {
             return request(app)
-               .put(`/api/${item.name}/123`)
+               .patch(`/api/${item.name}/123`)
                .set("Authorization", "Bearer " + token)
                .expect("Content-Type", /text\/html/)
                .expect(404)
@@ -340,9 +354,9 @@ describe("------ API------", () => {
                });
          });
 
-         it(`PUT /${item.name}/id  -->  400 if Authorization failed`, () => {
+         it(`PATCH /${item.name}/id  -->  400 if Authorization failed`, () => {
             return request(app)
-               .put(`/api/${item.name}/123`)
+               .patch(`/api/${item.name}/123`)
                .expect("Content-Type", /text\/html/)
                .expect(400)
                .then((res) => {

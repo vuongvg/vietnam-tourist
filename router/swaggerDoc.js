@@ -1,5 +1,3 @@
-
-
 //Auth
 
 /**
@@ -97,10 +95,48 @@
  *       - User
  */
 
+
+/**
+ * @swagger
+ * /user/:
+ *   get:
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           default:
+ *         description: The number of page to return
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           default:
+ *         description: The numbers of items to return
+ *     responses:
+ *       201:
+ *         description: Login User.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               allOf:
+ *                 - $ref: '#/components/schemas/User'
+ *                 - type: object
+ *                   properties:
+ *                     avatar:
+ *                     phone:
+ *                     token:
+ *                       type: string
+ *                       description: The User's token.
+ *                       example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzFlYWVmMWY5YjAzNjRkOTQ0YTliZWIiLCJpYXQiOjE2NjU5MzE5OTYsImV4cCI6MTc1MjMzMTk5Nn0.jNPTrVr6l-mB4ScAZcpfhbsmHRdRaXaSTYjSh5DCGiM'
+ *     tags:
+ *       - User
+ */
+
 /**
  * @swagger
  * /user/{id}:
- *   put:
+ *   patch:
  *     parameters:
  *       - in: path
  *         name: id
@@ -225,7 +261,7 @@
 /**
  * @swagger
  * /blog/{id}:
- *   put:
+ *   patch:
  *     parameters:
  *       - in: path
  *         name: id
@@ -294,7 +330,7 @@
  */
 
 /////////////////////Hotel
-// {{url}}/api/hotel/?sort={"hotelname":"-1"}&range=["evaluate",4, 5]&filter={"isfamous":"famous"}&search=["hotelname","Sofi"]
+// {{url}}/api/hotel/?sort={"hotelname":"-1"}&range=["evaluate",4, 5]&filter={"famous":true}&search=["hotelname","Sofi"]
 
 /**
  * @swagger
@@ -319,7 +355,7 @@
  *         schema:
  *           type: string
  *           default:
- *         description: Filter items. *** Example {"isfamous":"famous"}
+ *         description: Filter items. *** Example {"famous":true}
  *
  *       - in: query
  *         name: range
@@ -402,7 +438,7 @@
 /**
  * @swagger
  * /hotel/{id}:
- *   put:
+ *   patch:
  *     parameters:
  *       - in: path
  *         name: id
@@ -549,7 +585,7 @@
 /**
  * @swagger
  * /tour/{id}:
- *   put:
+ *   patch:
  *     parameters:
  *       - in: path
  *         name: id
@@ -696,7 +732,7 @@
 /**
  * @swagger
  * /location/{id}:
- *   put:
+ *   patch:
  *     parameters:
  *       - in: path
  *         name: id
@@ -843,7 +879,7 @@
 /**
  * @swagger
  * /restaurant/{id}:
- *   put:
+ *   patch:
  *     parameters:
  *       - in: path
  *         name: id
@@ -930,32 +966,33 @@
  *           type: string
  *           description: The User's password.
  *           example: '123456@A'
-
  *     User:
  *       allOf:
- *         - $ref: '#/components/schemas/NewUser'
  *         - type: object
  *           properties:
  *             _id:
  *               type: string
  *               description: The User ID.
  *               example: 634c20c5f55c4a3f2fa28c1e
+ *             username:
+ *               type: string
+ *               description: The User's title.
+ *               example: sale03
  *             email:
- *               type: string   
+ *               type: string
  *               description: The User's email.
  *               example: 'sale3@email.com'
  *             role:
- *               type: string   
+ *               type: string
  *               description: The User's role.
  *               example: 'admin'
  *             phone:
  *               type: string
  *               description: The User's phone.
  *               example: '0968584588'
- *             password:
  *             avatar:
  *               type: object
- *               properties: 
+ *               properties:
  *                 src:
  *                   type: string
  *                   description: The avatar's src.

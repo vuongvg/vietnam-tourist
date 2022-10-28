@@ -13,7 +13,7 @@ exports.errorHandleMdw = (err, req, res, next) => {
 
       const stack = err.stack
          .split("\n")
-         .filter((line) => !line.match(/node_modules/))
+         .filter((line) => !line.match(/node_modules/)) 
          .join("\n");
       console.log("***ERROR", stack);
 
@@ -22,6 +22,6 @@ exports.errorHandleMdw = (err, req, res, next) => {
       res.status(err.status).send(err.message);
       return;
    } else {
-      next();
+      next(); 
    }
 };

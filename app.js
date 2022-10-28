@@ -25,6 +25,7 @@ app.get("/", (req, res) => {
    res.send("Sever is running ");
 });
 app.use("/api", router);
+// resend style css
 app.get("/docs/swagger-ui-custom.css", (req, res) => {
    res.sendFile(`${__dirname}/public/swagger-ui-custom.css`);
 });
