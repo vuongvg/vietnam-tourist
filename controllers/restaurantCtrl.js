@@ -7,7 +7,7 @@ class Restaurant extends BasePost {
   }
   findFamousRestaurant = async (page = 1, limit = 10) => {
       return await this._model
-          .find({ isfamous:true })
+          .find({ famous:true })
           .skip((page - 1) * limit)
           .limit(limit);
   };

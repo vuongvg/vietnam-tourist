@@ -1,20 +1,22 @@
 const express = require("express");
 const router = express.Router();
-const AuthCtrl = require("../controllers/authCtrl");
+const { login, register } = require("../controllers/authCtrl");
 const { asyncWrapper } = require("../middlewares/asyncWrapper");
 
 router.post(
    "/login",
    asyncWrapper(async (req, res) => {
-      const login = await AuthCtrl.login(req.body.username, req.body.password);
-      res.status(200).json(login);
+      const { username, password } = req.body;
+      const result = await login(username, password);
+      res.status(200).json(result);
    })
 );
 
 router.post(
    "/register",
    asyncWrapper(async (req, res) => {
-      const newUser = await AuthCtrl.register(req.body.username, req.body.email, req.body.password);
+      const { username, email, password } = req.body;
+      const newUser = await register(username, email, password);
       res.status(201).json(newUser);
    })
 );

@@ -72,7 +72,7 @@ const newRestaurant = {
       },
    ],
    description: " SEN l Buffet Viet Nam",
-   isfamous: "famous",
+   famous: true,
 };
 
 const newTour = {
@@ -102,7 +102,7 @@ const hotelItem = {
    title: expect.any(String),
    description: expect.any(String),
    createBy: expect.objectContaining({ _id: expect.any(String), username: expect.any(String) }),
-   isfamous: expect.any(String),
+   famous: expect.any(String),
    avatar: expect.objectContaining({ src: expect.any(String) }),
    typePost: expect.any(String),
    album: expect.any(Array),
@@ -146,7 +146,7 @@ const restaurantItem = {
    gmaplink: expect.any(String),
    album: expect.any(Array),
    createBy: expect.objectContaining({ _id: expect.any(String), username: expect.any(String) }),
-   // isfamous: expect.any(String),
+   // famous: expect.any(String),
    // typePost: expect.any(String),
 };
 
@@ -162,7 +162,7 @@ const tourItem = {
    price: expect.any(Number),
    regularPrice: expect.any(Number),
    transfer: expect.any(String),
-   // isfamous: expect.any(String),
+   // famous: expect.any(String),
    // typePost: expect.any(String),
 };
 
@@ -253,9 +253,9 @@ describe("------ API------", () => {
             });
       });
 
-      it(`PUT /user  --> update user`, () => {
+      it(`PATCH /user  --> update user`, () => {
          return request(app)
-            .put(`/api/user/${newUser._id}`)
+            .patch(`/api/user/${newUser._id}`)
             .set("Authorization", "Bearer " + newUser.token)
             .send(newUser)
             .expect("Content-Type", /json/)
@@ -311,9 +311,9 @@ describe("------ API------", () => {
                });
          });
 
-         it(`PUT /${item.name}/id   --> update ${item.name}`, () => {
+         it(`PATCH /${item.name}/id   --> update ${item.name}`, () => {
             return request(app)
-               .put(`/api/${item.name}/${item.idItem}`)
+               .patch(`/api/${item.name}/${item.idItem}`)
                .set("Authorization", "Bearer " + token)
                .send({
                   title: "test update title",
@@ -327,9 +327,9 @@ describe("------ API------", () => {
                });
          });
 
-         it(`PUT /${item.name}/id   --> ReUpdate ${item.name}`, () => {
+         it(`PATCH /${item.name}/id   --> ReUpdate ${item.name}`, () => {
             return request(app)
-               .put(`/api/${item.name}/${item.idItem}`)
+               .patch(`/api/${item.name}/${item.idItem}`)
                .set("Authorization", "Bearer " + token)
                .send({
                   title: item.newDocument.title,
@@ -343,9 +343,9 @@ describe("------ API------", () => {
                });
          });
 
-         it(`PUT /${item.name}/id  -->  404 if not found`, () => {
+         it(`PATCH /${item.name}/id  -->  404 if not found`, () => {
             return request(app)
-               .put(`/api/${item.name}/123`)
+               .patch(`/api/${item.name}/123`)
                .set("Authorization", "Bearer " + token)
                .expect("Content-Type", /text\/html/)
                .expect(404)
@@ -354,9 +354,9 @@ describe("------ API------", () => {
                });
          });
 
-         it(`PUT /${item.name}/id  -->  400 if Authorization failed`, () => {
+         it(`PATCH /${item.name}/id  -->  400 if Authorization failed`, () => {
             return request(app)
-               .put(`/api/${item.name}/123`)
+               .patch(`/api/${item.name}/123`)
                .expect("Content-Type", /text\/html/)
                .expect(400)
                .then((res) => {

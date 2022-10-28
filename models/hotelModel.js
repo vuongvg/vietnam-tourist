@@ -49,9 +49,9 @@ const hotelSchema = new mongoose.Schema(
       evaluate: {
          type: Number,
       },
-      isfamous: {
-         type: String,
-         default: "not famous", //famous
+      famous: {
+         type: Boolean,
+         // default: "not famous", //famous
       },
       createBy: {
          _id: {

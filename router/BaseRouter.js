@@ -44,7 +44,7 @@ class BaseRouter extends Router {
          })
       );
 
-      this.put(
+      this.patch(
          "/:id",
          asyncWrapper(async (req, res) => {
             const result = await this._updateBasePost(req.params.id, req.body, req.user);

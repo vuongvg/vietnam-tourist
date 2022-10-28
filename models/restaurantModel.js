@@ -45,7 +45,7 @@ const restaurantSchema = new mongoose.Schema(
       evaluate: {
          type: Number,
       },
-      isfamous: {
+      famous: {
          type: String,
          default: "no famous", //famous
       },
