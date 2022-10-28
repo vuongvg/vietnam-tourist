@@ -46,8 +46,8 @@ const restaurantSchema = new mongoose.Schema(
          type: Number,
       },
       famous: {
-         type: String,
-         default: "no famous", //famous
+         type: Boolean,
+         // default: "no famous", //famous
       },
       createBy: {
          _id: {
