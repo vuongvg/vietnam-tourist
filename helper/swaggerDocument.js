@@ -2,6 +2,12 @@ const { hotelSchemaDoc } = require("../models/hotelModel.doc");
 const HotelModel = require("../models/hotelModel");
 const { hotelRouteDoc } = require("../router/hotel.doc");
 const path = require("path");
+const { blogRouteDoc } = require("../router/blog.doc");
+const { locationRouteDoc } = require("../router/location.doc");
+const { tourRouteDoc } = require("../router/tour.doc");
+const { restaurantRouteDoc } = require("../router/restaurant.doc");
+const { userRouteDoc } = require("../router/user.doc");
+const { authRouteDoc } = require("../router/auth.doc");
 
 exports.swaggerDocument = {
    openapi: "3.0.0",
@@ -39,10 +45,13 @@ exports.swaggerDocument = {
       },
    ],
    paths: {
+      ...authRouteDoc,
+      ...userRouteDoc,
       ...hotelRouteDoc,
+      ...blogRouteDoc,
+      ...locationRouteDoc,
+      ...tourRouteDoc,
+      ...restaurantRouteDoc,
    },
    // apis: ["../router/swaggerDoc.js"],
 };
-
-console.log(__dirname) 
-console.log(path.join("../router/swaggerDoc.js"))
