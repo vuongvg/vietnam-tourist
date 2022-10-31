@@ -1,34 +1,34 @@
 //Auth
 
-/**
- * @swagger
- * /auth/login:
- *   post:
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *             schema:
- *               $ref: '#/components/schemas/NewUser'
- *     responses:
- *       200:
- *         description: Login User.
- *         content:
- *           application/json:
- *             schema:
- *               allOf:
- *                 - $ref: '#/components/schemas/User'
- *                 - type: object
- *                   properties:
- *                     avatar:
- *                     phone:
- *                     token:
- *                       type: string
- *                       description: The User's token.
- *                       example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzFlYWVmMWY5YjAzNjRkOTQ0YTliZWIiLCJpYXQiOjE2NjU5MzE5OTYsImV4cCI6MTc1MjMzMTk5Nn0.jNPTrVr6l-mB4ScAZcpfhbsmHRdRaXaSTYjSh5DCGiM'
- *     tags:
- *       - Auth
- */
+    /**
+     * @swagger
+     * /auth/login: 
+     *   post:
+     *     requestBody:
+     *       required: true
+     *       content:
+     *         application/json:
+     *             schema:
+     *               $ref: '#/components/schemas/NewUser'
+     *     responses:
+     *       200:
+     *         description: Login User.
+     *         content:
+     *           application/json:
+     *             schema:
+     *               allOf:
+     *                 - $ref: '#/components/schemas/User'
+     *                 - type: object
+     *                   properties:
+     *                     avatar:
+     *                     phone:
+     *                     token:
+     *                       type: string
+     *                       description: The User's token.
+     *                       example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzFlYWVmMWY5YjAzNjRkOTQ0YTliZWIiLCJpYXQiOjE2NjU5MzE5OTYsImV4cCI6MTc1MjMzMTk5Nn0.jNPTrVr6l-mB4ScAZcpfhbsmHRdRaXaSTYjSh5DCGiM'
+     *     tags:
+     *       - Auth
+     */
 
 /**
  * @swagger
