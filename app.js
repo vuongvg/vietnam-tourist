@@ -7,9 +7,7 @@ const { notFoundMdw } = require("./middlewares/notFound");
 const router = require("./router");
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
-const { swaggerDocument } = require("./swagger");
-const path = require("path");
-// const { swaggerDocument } = require("./helper/swaggerDocument");
+const { swaggerDocument } = require("./helper/swaggerDocument");
 // const swaggerDocument = require("./swagger");
 
 const app = express();
@@ -29,12 +27,11 @@ app.get("/", (req, res) => {
 });
 app.use("/api", router);
 // resend style css
-
 app.get("/docs/swagger-ui-custom.css", (req, res) => {
    res.sendFile(`${__dirname}/public/swagger-ui-custom.css`);
 });
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerJSDoc(swaggerDocument), options));
-// app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument,options));
+// app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerJSDoc(swaggerDocument), options));
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument,options));
 
 app.use(notFoundMdw);
 app.use(errorHandleMdw);

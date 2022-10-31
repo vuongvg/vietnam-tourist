@@ -1,6 +1,7 @@
 const { hotelSchemaDoc } = require("../models/hotelModel.doc");
 const HotelModel = require("../models/hotelModel");
 const { hotelRouteDoc } = require("../router/hotel.doc");
+const path = require("path");
 
 exports.swaggerDocument = {
    openapi: "3.0.0",
@@ -40,6 +41,8 @@ exports.swaggerDocument = {
    paths: {
       ...hotelRouteDoc,
    },
-
-   //    apis: ["./router/swaggerDoc.js"],
+   // apis: ["../router/swaggerDoc.js"],
 };
+
+console.log(__dirname) 
+console.log(path.join("../router/swaggerDoc.js"))
