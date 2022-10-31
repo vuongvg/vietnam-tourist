@@ -51,7 +51,7 @@ const hotelSchema = new mongoose.Schema(
       },
       famous: {
          type: Boolean,
-         // default: "not famous", //famous
+         default: false,
       },
       createBy: {
          _id: {
