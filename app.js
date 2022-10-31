@@ -7,8 +7,9 @@ const { notFoundMdw } = require("./middlewares/notFound");
 const router = require("./router");
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
+const { swaggerDocument } = require("./swagger");
 // const { swaggerDocument } = require("./helper/swaggerDocument");
-const swaggerDocument = require("./swagger.json");
+// const swaggerDocument = require("./swagger");
 
 const app = express();
 
