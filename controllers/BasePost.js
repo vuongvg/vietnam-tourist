@@ -22,7 +22,6 @@ class BasePost {
          //       query.search ? { [fieldSearch]: { $regex: RegExp(keyword.replace("_", " ")), $options: "i" } } : {},
          //    ],
          // };
-         console.log(`  ~ entry`, entry)
 
          const [data, total] = await Promise.all([
             this._model
