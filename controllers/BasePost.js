@@ -11,9 +11,10 @@ class BasePost {
       this.findAllBasePost = async (query, page, limit) => {
          const [fieldRange, min, max] = query.range ? JSON.parse(query.range) : [null, null, null];
          const [fieldSearch, keyword] = query.search ? JSON.parse(query.search) : [null, null];
-
-         const entry = 
-         query.filter ? JSON.parse(query.filter) : {}
+         const { idPost } = query;
+         const entry = {
+            $and: [query.filter ? JSON.parse(query.filter) : {}, idPost ? {idPost:idPost} : {}],
+         };
          // {
          //    $and: [
          //       query.filter ? JSON.parse(query.filter) : {},
