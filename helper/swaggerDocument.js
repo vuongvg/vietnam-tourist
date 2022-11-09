@@ -10,6 +10,7 @@ const { hotelSchemaDoc } = require("../models/hotelModel.doc");
 const { blogSchemaDoc } = require("../models/blogModel.doc");
 const { tourSchemaDoc } = require("../models/tourModel.doc");
 const { searchRouteDoc } = require("../router/search.doc");
+const { commentRouteDoc } = require("../router/comment.doc");
 
 exports.swaggerDocument = {
    openapi: "3.0.0",
@@ -49,6 +50,7 @@ exports.swaggerDocument = {
       ...locationRouteDoc,
       ...tourRouteDoc,
       ...restaurantRouteDoc,
+      ...commentRouteDoc,
    },
    // apis: ["../router/swaggerDoc.js"],
 };
