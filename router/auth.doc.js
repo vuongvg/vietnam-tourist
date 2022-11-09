@@ -21,7 +21,7 @@ const user = {
 
 const { createPost } = new PostRouteDoc({
    tag: "auth",
-   newPost: newUser,
+   newPost: newUser, 
    post: user,
    idTest: idTest,
 });

@@ -9,6 +9,7 @@ const newLocation = {
    },
    description:
       "The karst seascape of Halong Bay is one of the best places to visit in the world for spellbinding sea views and is a UNESCO World Heritage Site.",
+      content: "No one ever expects the unexpected but it’s always great to have a safeguard just in case.",
 };
 
 const location = {

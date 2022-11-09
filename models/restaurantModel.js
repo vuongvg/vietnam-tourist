@@ -41,6 +41,12 @@ const restaurantSchema = new mongoose.Schema(
       description: {
          type: String,
          required: [true, "Description must be provided"],
+         minlength: [6, "Content can not be less than 6 characters"],
+      },
+      content: {
+         type: String,
+         required: [true, "Content must be provided"],
+         minlength: [6, "Content can not be less than 6 characters"],
       },
       evaluate: {
          type: Number,

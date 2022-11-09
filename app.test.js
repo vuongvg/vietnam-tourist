@@ -45,7 +45,9 @@ const newLocation = {
    },
    description:
       "The karst seascape of Halong Bay is one of the best places to visit in the world for spellbinding sea views and is a UNESCO World Heritage Site.",
-};
+   content:
+      "The karst seascape of Halong Bay is one of the best places to visit in the world for spellbinding sea views and is a UNESCO World Heritage Site.",
+}; 
 
 const newRestaurant = {
    title: "Buffet Sen Ho Tay",
@@ -72,6 +74,7 @@ const newRestaurant = {
       },
    ],
    description: " SEN l Buffet Viet Nam",
+   content: "No one ever expects the unexpected but it’s always great to have a safeguard just in case.",
    famous: true,
 };
 
@@ -102,14 +105,15 @@ const hotelItem = {
    title: expect.any(String),
    description: expect.any(String),
    createBy: expect.objectContaining({ _id: expect.any(String), username: expect.any(String) }),
-   famous: expect.any(String),
+   // famous: expect.any(String),
    avatar: expect.objectContaining({ src: expect.any(String) }),
    typePost: expect.any(String),
    album: expect.any(Array),
    email: expect.any(String),
    phone: expect.any(String),
    city: expect.any(String),
-   fullLocation: expect.any(String),
+   fullLocation: expect.any(String), 
+
    // album: expect.arrayContaining([expect.objectContaining({ src: expect.any(String) })]),
    // evaluate: expect.any(Number),
 };
@@ -170,7 +174,7 @@ const listTestAPI = [
    { name: "hotel", document: hotelItem, newDocument: newHotel, idItem: "634a8c8c08a59397336fd053" },
    { name: "blog", document: blogItem, newDocument: newBlog, idItem: "63310ae8c894be068fe83640" },
    { name: "tour", document: tourItem, newDocument: newTour, idItem: "6347d6ed61381330fa2f3397" },
-   { name: "location", document: locationItem, newDocument: newLocation, idItem: "6347bbfa28b43c92e9b9bcf5" },
+   { name: "location", document: locationItem, newDocument: newLocation, idItem: "6347bbfa28b43c92e9b9bcf5" }, 
    { name: "restaurant", document: restaurantItem, newDocument: newRestaurant, idItem: "631f5ce934dbea6679e3b899" },
 ];
 

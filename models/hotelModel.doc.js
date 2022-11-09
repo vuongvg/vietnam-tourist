@@ -4,14 +4,14 @@ exports.hotelSchemaDoc = {
       properties: {
          _id: { type: "string", description: "The hotel ID.", example: "634a8c8c08a59397336fd053" },
          title: { type: "string", description: `The hotel's title.`, example: "Intercontinental Hanoi Westlake, An IHG Hotel" },
-         content: {
-            type: "string",
-            description: `The hotel's content.`,
-            example: "Thế hệ trẻ ngày nay là một thế hệ bước ra thế giới, một thế hệ phải dịch chuyển nhiều hơn và đi nhiều hơn.",
-         },
          description: {
             type: "string",
             description: "The hotel's description.",
+            example: `InterContinental Hanoi Westlake is an iconic hotel in the heart of the vibrant district of Tay Ho, offering travelers luxurious guest rooms and bespoke Club InterContinental service.`,
+         },
+         content: {
+            type: "string",
+            description: "The hotel's content.",
             example: `InterContinental Hanoi Westlake is an iconic hotel in the heart of the vibrant district of Tay Ho, offering travelers luxurious guest rooms and bespoke Club InterContinental service. Experience multi-award-winning dining at Saigon restaurant or capture a magnificent sunset at Hanoi's only overwater bar, Sunset Bar. The hotel is minutes away from the city’s most alluring attractions, while at the same time offering a peaceful escape in a beautiful and iconic lakeside setting.`,
          },
          email: { type: "string", description: "The hotel's email.", example: "sale@email.com" },
@@ -28,6 +28,25 @@ exports.hotelSchemaDoc = {
                },
             },
          },
+
+         createBy: {
+            type: "object",
+            properties: {
+               username: {
+                  type: "string",
+                  description: "The createBy's username.",
+                  example: "vuongcdt",
+               },
+               _id: {
+                  type: "string",
+                  description: "The createBy's id.",
+                  example: "6321d39ebe7bf2286b823b33",
+               },
+            },
+         },
+         typePost: { type: "string", description: "The tour's typePost.", default: "hotel" },
+         createdAt: { type: "string", description: "The tour's createdAt.", example: "2022-10-13T09:14:21.187Z" },
+         updatedAt: { type: "string", description: "The tour's updatedAt.", example: "2022-10-13T09:14:21.187Z" },
       },
    },
 };

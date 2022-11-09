@@ -19,6 +19,11 @@ const locationSchema = new mongoose.Schema(
          required: [true, "Description is required"],
          minlength: [6, "Description can not be less than 6 characters"],
       },
+      content: {
+         type: String,
+         required: [true, "Content is required"],
+         minlength: [6, "Description can not be less than 6 characters"],
+      },
       createBy: {
          _id: {
             type: String,
