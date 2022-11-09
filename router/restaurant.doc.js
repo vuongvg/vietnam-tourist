@@ -26,7 +26,7 @@ const newRestaurant = {
          src: "https://media.foody.vn/res/g1/155/prof/s640x400/foody-mobile-sen2-jpg-361-635744536611054640.jpg",
       },
    ],
-
+   content: "No one ever expects the unexpected but it’s always great to have a safeguard just in case.",
    description:
       "Hệ thống nhà hàng SEN là chuỗi nhà hàng ẩm thực Buffet đầu tiên tại Việt Nam. Buffet từ lâu đã được ưa chuộng ở Châu Âu, xuất hiện lần đầu tiên vào thế kỷ 17 tại Pháp. Với một hình thức ăn uống mới mẻ, phong phú về thực đơn , tinh tế về hình thức và chất lượng trong từng món ăn.",
 };

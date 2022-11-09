@@ -41,7 +41,7 @@ const tourSchema = new mongoose.Schema(
          type: String,
       },
       depart: {
-         type: String,
+         type: Date,
       },
       transfer: {
          type: String,
