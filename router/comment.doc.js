@@ -1,6 +1,6 @@
 const PostRouteDoc = require("./baseRouter.doc");
 
-const idTest = "63581631f1dde498dc799586";
+const idTest = "631b54fb72e4f5eebe03a65d";
 
 const newComment = {
    idPost: "631b54fb72e4f5eebe03a65d",
