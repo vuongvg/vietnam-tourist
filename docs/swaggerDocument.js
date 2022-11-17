@@ -1,4 +1,3 @@
-
 const { hotelRouteDoc } = require("./hotel.doc");
 const { blogRouteDoc } = require("./blog.doc");
 const { locationRouteDoc } = require("./location.doc");
@@ -11,6 +10,9 @@ const { blogSchemaDoc } = require("./blogModel.doc");
 const { tourSchemaDoc } = require("./tourModel.doc");
 const { searchRouteDoc } = require("./search.doc");
 const { commentRouteDoc } = require("./comment.doc");
+const { locationSchemaDoc } = require("./locationModel.doc");
+const { restaurantSchemaDoc } = require("./restaurantModel.doc");
+const { userSchemaDoc } = require("./userModel.doc");
 
 exports.swaggerDocument = {
    openapi: "3.0.0",
@@ -38,8 +40,8 @@ exports.swaggerDocument = {
                "Example:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzFlYWVmMWY5YjAzNjRkOTQ0YTliZWIiLCJpYXQiOjE2NjU5MzE5OTYsImV4cCI6MTc1MjMzMTk5Nn0.jNPTrVr6l-mB4ScAZcpfhbsmHRdRaXaSTYjSh5DCGiM",
          },
       },
-      schemas: { ...hotelSchemaDoc ,...blogSchemaDoc,...tourSchemaDoc}, 
-   },  
+      schemas: { ...userSchemaDoc, ...hotelSchemaDoc, ...blogSchemaDoc, ...tourSchemaDoc, ...locationSchemaDoc, ...restaurantSchemaDoc },
+   },
    security: [{ bearerAuth: [] }],
    paths: {
       ...authRouteDoc,

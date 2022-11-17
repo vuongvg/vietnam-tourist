@@ -40,9 +40,9 @@ exports.blogSchemaDoc = {
                },
             },
          },
-         typePost: { type: "string", description: "The tour's typePost.", default: "blog" },
-         createdAt: { type: "string", description: "The tour's createdAt.", example: "2022-10-13T09:14:21.187Z" },
-         updatedAt: { type: "string", description: "The tour's updatedAt.", example: "2022-10-13T09:14:21.187Z" },
+         typePost: { type: "string", description: "The blog's typePost.", default: "blog" },
+         createdAt: { type: "string", description: "The blog's createdAt.", example: "2022-10-13T09:14:21.187Z" },
+         updatedAt: { type: "string", description: "The blog's updatedAt.", example: "2022-10-13T09:14:21.187Z" },
       },
    },
 };
