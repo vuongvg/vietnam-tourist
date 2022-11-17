@@ -1,4 +1,4 @@
-const { use } = require("./auth");
+const { use } = require("../router/auth");
 const PostRouteDoc = require("./baseRouter.doc");
 
 const idTest = "63581631f1dde498dc799586";

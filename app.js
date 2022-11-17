@@ -2,12 +2,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
-const { errorHandleMdw } = require("./middlewares/errorHandleMdw");
+const { errorHandleMdw } = require("./errors/errorHandleMdw");
 const { notFoundMdw } = require("./middlewares/notFound");
 const router = require("./router");
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
-const { swaggerDocument } = require("./helper/swaggerDocument");
+const { swaggerDocument } = require("./docs/swaggerDocument");
 const Document = require("./swagger.json");
 
 const app = express();
