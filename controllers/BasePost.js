@@ -11,18 +11,15 @@ class BasePost {
       this.findAllBasePost = async (query, page, limit) => {
          const [fieldRange, min, max] = query.range ? JSON.parse(query.range) : [null, null, null];
          const [fieldSearch, keyword] = query.search ? JSON.parse(query.search) : [null, null];
-         const { idPost } = query;
+         // const entry = query.filter ? JSON.parse(query.filter) : {};
          const entry = {
-            $and: [query.filter ? JSON.parse(query.filter) : {}, idPost ? {idPost:idPost} : {}],
+            $and: [
+               query.filter ? JSON.parse(query.filter) : {},
+               query.exclude ? { _id: { $ne: query.exclude } } : {},
+               query.range ? { [fieldRange]: { $gte: min, $lte: max } } : {},
+               query.search ? { [fieldSearch]: { $regex: RegExp(keyword.replace("_", " ")), $options: "i" } } : {},
+            ],
          };
-         // {
-         //    $and: [
-         //       query.filter ? JSON.parse(query.filter) : {},
-         //       query.exclude ? { _id: { $ne: query.exclude } } : {},
-         //       query.range ? { [fieldRange]: { $gte: min, $lte: max } } : {},
-         //       query.search ? { [fieldSearch]: { $regex: RegExp(keyword.replace("_", " ")), $options: "i" } } : {},
-         //    ],
-         // };
 
          const [data, total] = await Promise.all([
             this._model

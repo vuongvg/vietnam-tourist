@@ -1,16 +1,16 @@
 
-const { hotelRouteDoc } = require("../router/hotel.doc");
-const { blogRouteDoc } = require("../router/blog.doc");
-const { locationRouteDoc } = require("../router/location.doc");
-const { tourRouteDoc } = require("../router/tour.doc");
-const { restaurantRouteDoc } = require("../router/restaurant.doc");
-const { userRouteDoc } = require("../router/user.doc");
-const { authRouteDoc } = require("../router/auth.doc");
-const { hotelSchemaDoc } = require("../models/hotelModel.doc");
-const { blogSchemaDoc } = require("../models/blogModel.doc");
-const { tourSchemaDoc } = require("../models/tourModel.doc");
-const { searchRouteDoc } = require("../router/search.doc");
-const { commentRouteDoc } = require("../router/comment.doc");
+const { hotelRouteDoc } = require("./hotel.doc");
+const { blogRouteDoc } = require("./blog.doc");
+const { locationRouteDoc } = require("./location.doc");
+const { tourRouteDoc } = require("./tour.doc");
+const { restaurantRouteDoc } = require("./restaurant.doc");
+const { userRouteDoc } = require("./user.doc");
+const { authRouteDoc } = require("./auth.doc");
+const { hotelSchemaDoc } = require("./hotelModel.doc");
+const { blogSchemaDoc } = require("./blogModel.doc");
+const { tourSchemaDoc } = require("./tourModel.doc");
+const { searchRouteDoc } = require("./search.doc");
+const { commentRouteDoc } = require("./comment.doc");
 
 exports.swaggerDocument = {
    openapi: "3.0.0",
@@ -39,7 +39,7 @@ exports.swaggerDocument = {
          },
       },
       schemas: { ...hotelSchemaDoc ,...blogSchemaDoc,...tourSchemaDoc}, 
-   }, 
+   },  
    security: [{ bearerAuth: [] }],
    paths: {
       ...authRouteDoc,

@@ -1,7 +1,6 @@
 
 exports.errorHandleMdw = (err, req, res, next) => {
    if (err) {
-      console.log(`  ~ err`, err)
       if (err.name === "ValidationError") {
          Object.keys(err.errors).map((name) => (err.errors[name] = err.errors[name].properties?.message || err.errors[name].reason?.message));
          console.log(`  ~ err`, err);
@@ -16,7 +15,8 @@ exports.errorHandleMdw = (err, req, res, next) => {
          .split("\n")
          .filter((line) => !line.match(/node_modules/)) 
          .join("\n");
-      console.log("***ERROR", stack);
+      // console.log("***ERROR", stack);
+      console.log("***ERROR", err.message);
 
       // req.error = err;
       // console.log(`  ~ err`, err.name);
