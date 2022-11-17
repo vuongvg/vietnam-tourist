@@ -44,9 +44,9 @@ exports.hotelSchemaDoc = {
                },
             },
          },
-         typePost: { type: "string", description: "The tour's typePost.", default: "hotel" },
-         createdAt: { type: "string", description: "The tour's createdAt.", example: "2022-10-13T09:14:21.187Z" },
-         updatedAt: { type: "string", description: "The tour's updatedAt.", example: "2022-10-13T09:14:21.187Z" },
+         typePost: { type: "string", description: "The hotel's typePost.", default: "hotel" },
+         createdAt: { type: "string", description: "The hotel's createdAt.", example: "2022-10-13T09:14:21.187Z" },
+         updatedAt: { type: "string", description: "The hotel's updatedAt.", example: "2022-10-13T09:14:21.187Z" },
       },
    },
 };
